@@ -73,7 +73,7 @@ weight: 20
 
 ## Volume Resource
 
-Manage volumes on Dell EMC PowerFlex
+Manage volumes on Dell Technologies PowerFlex
 
 ### Synopsis
 Managing volumes on PowerFlex storage system includes creating new volume, mapping/unmapping volume to/from SDC, modifying attributes of volume and deleting volume.
@@ -325,7 +325,7 @@ Managing volumes on PowerFlex storage system includes creating new volume, mappi
 
 ## SDC Resource
 
-Manage SDCs on Dell EMC PowerFlex
+Manage SDCs on Dell Technologies PowerFlex
 ### Synopsis
 Managing SDCs on PowerFlex storage system includes importing details of SDC and renaming SDC
 
@@ -468,10 +468,10 @@ Managing SDCs on PowerFlex storage system includes importing details of SDC and 
 
 ## Storage Pool Resource
 
-Managing Dell EMC PowerFlex storage pool
+Managing Dell Technologies PowerFlex storage pool
 
 ### Synopsis
-Dell EMC PowerFlex storage pool module includes creating a new storage pool, and modifying the attributes of a storage pool.
+Dell Technologies PowerFlex storage pool module includes creating a new storage pool, and modifying the attributes of a storage pool.
 
 ### List Of Parameters
 
@@ -847,7 +847,7 @@ Managing snapshots on PowerFlex storage system includes creating snapshot for a 
 
  ## SDS Resource
 
-Manage SDS on Dell EMC PowerFlex
+Manage SDS on Dell Technologies PowerFlex
 
 ### Synopsis
 Managing SDS on PowerFlex storage system includes creating new SDS, adding/removing IP and role to/from SDS, modifying attributes of SDS, and deleting SDS.
@@ -1089,7 +1089,7 @@ Managing SDS on PowerFlex storage system includes creating new SDS, adding/remov
 
  ## SDC Datasource
 
-Manage SDCs on Dell EMC PowerFlex
+Manage SDCs on Dell Technologies PowerFlex
 ### Synopsis
 Managing SDCs on PowerFlex storage system includes getting details of SDC using id or name of SDC
 
@@ -1265,7 +1265,7 @@ Managing SDCs on PowerFlex storage system includes getting details of SDC using 
 
 ## Protection Domain Datasource
 
-Manage protection domain on Dell EMC PowerFlex
+Manage protection domain on Dell Technologies PowerFlex
 ### Synopsis
 Managing protection domain on PowerFlex storage system includes getting details of protection domain using id or name of protection domain
 
@@ -2079,7 +2079,7 @@ Managing protection domain on PowerFlex storage system includes getting details 
 
 ## SDS Datasource
 
-Manage SDS on Dell EMC PowerFlex
+Manage SDS on Dell Technologies PowerFlex
 ### Synopsis
 Managing SDS on PowerFlex storage system includes getting details of SDS using id or name of SDS
 
@@ -3092,7 +3092,7 @@ Managing SDS on PowerFlex storage system includes getting details of SDS using i
 
 ## Storage Pool Datasource
 
-Manage Storage Pool on Dell EMC PowerFlex
+Manage Storage Pool on Dell Technologies PowerFlex
 ### Synopsis
 Managing storage pool on PowerFlex storage system includes getting details of storage pool using id or name of storage pool
 
@@ -3649,7 +3649,7 @@ Managing storage pool on PowerFlex storage system includes getting details of st
 
 ## Storage Pool Datasource
 
-Manage Storage Pool on Dell EMC PowerFlex
+Manage Storage Pool on Dell Technologies PowerFlex
 ### Synopsis
 Managing storage pool on PowerFlex storage system includes getting details of storage pool using id or name of storage pool
 
@@ -4206,7 +4206,7 @@ Managing storage pool on PowerFlex storage system includes getting details of st
 
 ## Snapshot Policy Datasource
 
-Manage Snapshot Policy on Dell EMC PowerFlex
+Manage Snapshot Policy on Dell Technologies PowerFlex
 ### Synopsis
 Managing snapshot policy on PowerFlex storage system includes getting details of snapshot policy using id or name of snapshot policy
 
@@ -4466,7 +4466,7 @@ Managing snapshot policy on PowerFlex storage system includes getting details of
 
 ## Volume Datasource
 
-Manage Volume on Dell EMC PowerFlex
+Manage Volume on Dell Technologies PowerFlex
 ### Synopsis
 Managing volume on PowerFlex storage system includes getting details of volume using id or name of volume
 
