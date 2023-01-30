@@ -1014,7 +1014,7 @@ Managing SDS on PowerFlex storage system includes creating new SDS, adding/remov
         <td><br></td>
     </tr>
      <tr>
-        <td>&emsp;&emsp;is_on_vmware</td>
+        <td>is_on_vmware</td>
         <td>Is on vmware state of SDS.</td>
         <td>Computed</td>
         <td>bool</td>
@@ -1039,7 +1039,7 @@ Managing SDS on PowerFlex storage system includes creating new SDS, adding/remov
     </tr>
     <tr>
         <td>num_of_io_buffers</td>
-        <td>Number of io buffers of SDS.</td>
+        <td>Number of I/O buffers of SDS.</td>
         <td>Computed</td>
         <td>int64</td>
         <td><br></td>
@@ -1059,24 +1059,24 @@ Managing SDS on PowerFlex storage system includes creating new SDS, adding/remov
 ### Examples
 <pre>
     <code>
-        resource "powerflex_sds" "sds" {
-	      name = "Tf_SDS_01"
-	      ip_list = [
-		    {
-			ip = "10.247.100.232"
-			role = "all"
-		    },
-		    {
-			ip = "10.10.10.1"
-			role = "sdcOnly"
-		    }
-	      ]
-	      performance_profile = "Compact"
-	      rmcache_enabled = true
-	      rmcache_size_in_mb = 156
-	      rfcache_enabled = true
-	      drl_mode = "NonVolatile"
-	      protection_domain_id = "4eeb304600000000"
+resource "powerflex_sds" "sds" {
+    name = "Tf_SDS_01"
+    ip_list = [
+        {
+            ip = "10.247.100.232"
+            role = "all"
+        },
+        {
+            ip = "10.10.10.1"
+            role = "sdcOnly"
+        }
+    ]
+    performance_profile = "Compact"
+    rmcache_enabled = true
+    rmcache_size_in_mb = 156
+    rfcache_enabled = true
+    drl_mode = "NonVolatile"
+    protection_domain_id = "4eeb304600000000"
 }
     </code>
 </pre>
@@ -1085,7 +1085,10 @@ Managing SDS on PowerFlex storage system includes creating new SDS, adding/remov
 
 <ul>
         <li>Either protection_domain_id or protection_domain_name is required in order to create / modify SDS.</li>
- </ul>
+        <li><b>Note</b>: SDS creation or update is not atomic. In case of partially completed operations, terraform can mark the resource as tainted.
+One can manually remove the taint and try applying the configuration (after making necessary adjustments).
+<br><b>Warning</b>: If the taint is not removed, terraform will destroy and recreate the resource. </li>
+</ul>
 
  ## SDC Datasource
 
@@ -2051,23 +2054,25 @@ Managing protection domain on PowerFlex storage system includes getting details 
 </table>
 
 ### Examples
+
+#### Get protection domain details by id
 <pre>
-    <code>
-    # Get protection domain details by id
-        data "powerflex_protection_domain" "pd1" {						
-		id = "4eeb304600000000"
-	}
-
-    # Get protection domain details by name
-        data "powerflex_protection_domain" "pd2" {			
-		name = "domain1"
-	}
-
-    #Get all protection domains
-       data "powerflex_protection_domain" "pd3" {						
-	}
+data "powerflex_protection_domain" "pd1" {						
+    id = "4eeb304600000000"
 }
-    </code>
+</pre>
+
+#### Get protection domain details by name
+<pre>
+data "powerflex_protection_domain" "pd2" {			
+    name = "domain1"
+}
+</pre>
+
+#### Get all protection domains
+<pre>
+data "powerflex_protection_domain" "pd3" {						
+}
 </pre>
 
 ### Notes
