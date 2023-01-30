@@ -292,19 +292,19 @@ Managing volumes on PowerFlex storage system includes creating new volume, mappi
 <pre>
     <code>
         resource "powerflex_volume" "volume-create"{
-        name = "[volume-name]"
-        protection_domain_name = "[protection_domain_name]"
-        storage_pool_name = "[storage_pool_name]" 
-        size = "[size in int]"
-        use_rm_cache = "[true/false to enable rm cache]" 
-        volume_type = "[ThickProvisioned/ThinProvisioned type]" 
-        access_mode = "[ReadWrite/ReadOnly access mode]"
+        name = "volume-name-1"
+        protection_domain_name = "protection-domain-name-1"
+        storage_pool_name = "storage-pool-name-1" 
+        size = 8
+        use_rm_cache = true 
+        volume_type = ThickProvisioned 
+        access_mode = ReadWrite
         sdc_list = [
                 {
-                    sdc_name = "[sdc_name]"
-                    limit_iops = "[iops limit in int]"
-                    limit_bw_in_mbps = "[bandwidth limit in mbps in int]"
-                    access_mode = "[Noaccess/ReadOnly/ReadWrite access mode]"
+                    sdc_name = sdc_name
+                    limit_iops = 11
+                    limit_bw_in_mbps = 11
+                    access_mode = ReadOnly
                 },
             ]   
         }
@@ -463,8 +463,8 @@ Managing SDCs on PowerFlex storage system includes importing details of SDC and 
 <pre>
     <code>
         resource "powerflex_sdc" "sdc" {
-            id = "c423b09800000003"
-            name = "powerflex_sdc26"
+            id = "XABBD0980000000U"
+            name = "powerflex_sdc1"
         }
     </code>
 </pre>
@@ -572,7 +572,7 @@ Dell EMC PowerFlex storage pool module includes creating a new storage pool, and
     <code>
         resource "powerflex_storagepool" "storagepool" {
             name = "storagepool3"
-            protection_domain_id = "4eeb304600000000"
+            protection_domain_id = "XEEB3046000000OP"
             media_type = "HDD"
             use_rmcache = true
             use_rfcache = false
@@ -800,14 +800,14 @@ Managing snapshots on PowerFlex storage system includes creating snapshot for a 
     <code>
         resource "powerflex_snapshot" "snapshots-create-access-mode-sdc-map" {
             name = "snapshots-create-epsilon"
-            volume_id = "4577c84000000120"
+            volume_id = "XXXTUc84000000CBA"
             access_mode = "ReadWrite"
             size = 16
             capacity_unit = "GB"
             remove_mode = "INCLUDING_DESCENDANTS"
             sdc_list = [
                 {	
-                    sdc_id = "c423b09900000004"
+                    sdc_id = "XXXUOP99000000NNM"
                     limit_iops = 150
                     limit_bw_in_mbps = 20
                     access_mode = "ReadWrite"
@@ -822,14 +822,14 @@ Managing snapshots on PowerFlex storage system includes creating snapshot for a 
     <code>
         resource "powerflex_snapshot" "snapshots-create-access-mode-sdc-map" {
             name = "snapshots-create-epsilon"
-            volume_id = "4577c84000000120"
+            volume_id = "XSSS84000000REW"
             access_mode = "ReadWrite"
             size = 16
             capacity_unit = "GB"
             remove_mode = "INCLUDING_DESCENDANTS"
             sdc_list = [
                 {	
-                    sdc_id = "c423b09900000004"
+                    sdc_id = "XXYT099000000LK"
                     limit_iops = 150
                     limit_bw_in_mbps = 20
                     access_mode = "ReadWrite"
@@ -1072,11 +1072,11 @@ Managing SDS on PowerFlex storage system includes creating new SDS, adding/remov
 	      name = "Tf_SDS_01"
 	      ip_list = [
 		    {
-			ip = "10.247.100.232"
+			ip = "10.0.0.1"
 			role = "all"
 		    },
 		    {
-			ip = "10.10.10.1"
+			ip = "10.0.0.2"
 			role = "sdcOnly"
 		    }
 	      ]
@@ -1085,7 +1085,7 @@ Managing SDS on PowerFlex storage system includes creating new SDS, adding/remov
 	      rmcache_size_in_mb = 156
 	      rfcache_enabled = true
 	      drl_mode = "NonVolatile"
-	      protection_domain_id = "4eeb304600000000"
+	      protection_domain_id = "XFFB304600000000"
 }
     </code>
 </pre>
@@ -1248,7 +1248,7 @@ Managing SDCs on PowerFlex storage system includes getting details of SDC using 
     <code>
     # Get SDC details by id
         data "powerflex_sdc" "selected" {
-		id = "c423b09800000003"
+		id = "XNGRS09800000003"
 	    }
 
     # Get SDC details by name
@@ -2064,7 +2064,7 @@ Managing protection domain on PowerFlex storage system includes getting details 
     <code>
     # Get protection domain details by id
         data "powerflex_protection_domain" "pd1" {						
-		id = "4eeb304600000000"
+		id = "XLKJHG04600000000"
 	}
 
     # Get protection domain details by name
@@ -4175,14 +4175,14 @@ Managing storage pool on PowerFlex storage system includes getting details of st
     <code>
     # Get storage pool details by storage pool names and protection domain id
         data "powerflex_storagepool" "example1" {
-            protection_domain_id = "4eeb304600000000"
+            protection_domain_id = "XCFVG04600000000"
             storage_pool_names = ["pool2", "pool1"]
         }
 
     # Get storage pool details by storage pool ids and protection domain id
         data "powerflex_storagepool" "example2" {
-            protection_domain_id = "4eeb304600000000"
-            storage_pool_ids = ["7630a24600000000", "7630a24800000002"]
+            protection_domain_id = "XCFVG04600000000"
+            storage_pool_ids = ["ABGD24600000000", "ABGDa24800000002"]
         }
 
     # Get storage pool details by storage pool names and protection domain name
@@ -4194,7 +4194,7 @@ Managing storage pool on PowerFlex storage system includes getting details of st
     # Get storage pool details by storage pool id and protection domain name
         data "powerflex_storagepool" "example4" {
             protection_domain_name = "domain1"
-            storage_pool_ids = ["7630a24600000000", "7630a24800000002"]
+            storage_pool_ids = ["ABGD24600000000", "ABGD24800000002"]
         }
 
     # Get all storage pools under a protection domain id
@@ -4452,7 +4452,7 @@ Managing snapshot policy on PowerFlex storage system includes getting details of
     <code>
     # Get snapshot policy details by snapshot policy  id
         data "powerflex_snapshotpolicy" "sp1" {						
-            id = "15ad99b900000001"
+            id = "MRTYVXD900000001"
         }
 
     # Get snapshot policy details by snapshot policy name
@@ -4825,12 +4825,12 @@ Managing volume on PowerFlex storage system includes getting details of volume u
     <code>
     # Get volume details by volume id
         data "powerflex_volume" "all" {						
-            id = "457752ff000000c7"
+            id = "BHUXRTSD000000c7"
         }
 
     # Get volume details by volume name
         data "powerflex_volume" "all" {						
-            name = "cicd-dbc5a5909d"
+            name = "volume-name-1"
         }
 
     # Get all the volumes
@@ -4839,7 +4839,7 @@ Managing volume on PowerFlex storage system includes getting details of volume u
 
     # Get all the volumes under a storage pool using storage pool id
         data "powerflex_volume" "all" {						
-            storage_pool_id = "7630a24600000000"
+            storage_pool_id = "XXBDULNELUI0000000"
         }
 
     # Get all the volumes under a storage pool using storage pool name
