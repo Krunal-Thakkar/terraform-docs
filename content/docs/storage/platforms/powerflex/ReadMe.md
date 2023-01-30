@@ -79,7 +79,7 @@ Then follow [installation from public repo](#installation-from-public-repository
 
 For SSL verifcation on RHEL, below steps can be performed:
  * Copy the CA certificate to the `/etc/pki/ca-trust/source/anchors` path of the host by any external means.
- * Import the SSL certificate to host using the command:
+ * Import the SSL certificate to host by running
 ```
 update-ca-trust extract
 ```
