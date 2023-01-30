@@ -111,6 +111,43 @@ Managing volumes on PowerFlex storage system includes creating new volume, mappi
         <td><br></td>
         <td><br></td>
     </tr>
+        <tr>
+        <td>size</td>
+        <td>Size of the Volume.&nbsp;</td>
+        <td>Required</td>
+        <td>int64&nbsp;</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+        <tr>
+        <td>id</td>
+        <td>The ID of the volume.</td>
+        <td>Computed</td>
+        <td>string</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>size_in_kb</td>
+        <td>Size in KB.
+        </td>
+        <td>Computed</td>
+        <td>int64</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>compression_method</td>
+        <td>Type of the compression method.
+        </td>
+        <td>Computed</td>
+        <td>string</td>
+        <td><br></td>
+        <td><ul>
+        <li>None</li>
+        <li>Normal</li>
+        </ul></td>
+    </tr>
     <tr>
         <td>storage_pool_id</td>
         <td>Storage Pool id.</td>
@@ -144,14 +181,6 @@ Managing volumes on PowerFlex storage system includes creating new volume, mappi
         <td><br></td>
     </tr>
     <tr>
-        <td>size</td>
-        <td>Size of the Volume.&nbsp;</td>
-        <td>Required</td>
-        <td>int64&nbsp;</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-    <tr>
         <td>capacity_unit</td>
         <td>The unit of the volume size.</td>
         <td>Optional And Computed&nbsp;</td>
@@ -179,35 +208,6 @@ Managing volumes on PowerFlex storage system includes creating new volume, mappi
         </td>
         <td>Optional And Computed</td>
         <td>bool</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-    <tr>
-        <td>compression_method</td>
-        <td>Type of the compression method.
-        </td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><ul>
-        <li>None</li>
-        <li>Normal</li>
-        </ul></td>
-    </tr>
-    <tr>
-        <td>id</td>
-        <td>The ID of the volume.</td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-    <tr>
-        <td>size_in_kb</td>
-        <td>Size in KB.
-        </td>
-        <td>Computed</td>
-        <td>int64</td>
         <td><br></td>
         <td><br></td>
     </tr>
@@ -291,20 +291,20 @@ Managing volumes on PowerFlex storage system includes creating new volume, mappi
 ### Examples
 <pre>
     <code>
-        resource "powerflex_volume" "avengers-volume-create"{
-        name = "avengers-volume-create"
-        protection_domain_name = "domain1"
-        storage_pool_name = "pool1" 
-        size = 8
-        use_rm_cache = true 
-        volume_type = "ThickProvisioned" 
-        access_mode = "ReadWrite"
+        resource "powerflex_volume" "volume-create"{
+        name = "[volume-name]"
+        protection_domain_name = "[protection_domain_name]"
+        storage_pool_name = "[storage_pool_name]" 
+        size = "[size in int]"
+        use_rm_cache = "[true/false to enable rm cache]" 
+        volume_type = "[ThickProvisioned/ThinProvisioned type]" 
+        access_mode = "[ReadWrite/ReadOnly access mode]"
         sdc_list = [
-        {
-                sdc_name = "LGLW6092"
-                limit_iops = 119
-                limit_bw_in_mbps = 19
-                access_mode = "ReadOnly"
+                {
+                    sdc_name = "[sdc_name]"
+                    limit_iops = "[iops limit in int]"
+                    limit_bw_in_mbps = "[bandwidth limit in mbps in int]"
+                    access_mode = "[Noaccess/ReadOnly/ReadWrite access mode]"
                 },
             ]   
         }
@@ -314,11 +314,16 @@ Managing volumes on PowerFlex storage system includes creating new volume, mappi
 
 ### Notes
 <ul>
-<li> Volume name is unique across the PowerFlex array.</li>
+<li><b>Volume creation or update is not atomic.</b> <i>In case of partially completed operations, terraform can mark the resource as tainted.
+One can manually remove the taint and try applying the configuration (after making necessary adjustments).</i>
+
+<b>Warning: If the taint is not removed, terraform will destroy and recreate the resource.</b></li>
+<li> Volume name is <i>unique</i> across the PowerFlex array.</li>
 <li> Either name or the id of the storage pool is required for creating / modifying a volume.</li>
 <li> Either name or the id of the protection domain is required for creating / modifying a volume.</li>
 <li> Size of the volume should be a multiple of 8.</li>
 <li> specify 0 for unlimited iops..</li>
+<li> iops limit value should be specified greater than 10. if not specified unlimited iops with value 0 </li>
 <li> To set no limit over bandwidth, 0 is to be passed.</li>
 <li> Specify either sdc_name or sdc_id.</li>
 </ul>
@@ -837,6 +842,10 @@ Managing snapshots on PowerFlex storage system includes creating snapshot for a 
 ### Notes
 
 <ul>
+    <li><b>Snapshot creation or update is not atomic.</b> <i>In case of partially completed operations, terraform can mark the resource as tainted.
+One can manually remove the taint and try applying the configuration (after making necessary adjustments).</i>
+
+<b>Warning: If the taint is not removed, terraform will destroy and recreate the resource.</b></li>
         <li>Either volume_id or volume_name is required in order to create / modify snapshot.</li>
         <li> Size of the volume should be a multiple of 8.</li>
         <li> specify 0 for unlimited iops..</li>
@@ -1014,7 +1023,7 @@ Managing SDS on PowerFlex storage system includes creating new SDS, adding/remov
         <td><br></td>
     </tr>
      <tr>
-        <td>is_on_vmware</td>
+        <td>&emsp;&emsp;is_on_vmware</td>
         <td>Is on vmware state of SDS.</td>
         <td>Computed</td>
         <td>bool</td>
@@ -1039,7 +1048,7 @@ Managing SDS on PowerFlex storage system includes creating new SDS, adding/remov
     </tr>
     <tr>
         <td>num_of_io_buffers</td>
-        <td>Number of I/O buffers of SDS.</td>
+        <td>Number of io buffers of SDS.</td>
         <td>Computed</td>
         <td>int64</td>
         <td><br></td>
@@ -1059,24 +1068,24 @@ Managing SDS on PowerFlex storage system includes creating new SDS, adding/remov
 ### Examples
 <pre>
     <code>
-resource "powerflex_sds" "sds" {
-    name = "Tf_SDS_01"
-    ip_list = [
-        {
-            ip = "10.247.100.232"
-            role = "all"
-        },
-        {
-            ip = "10.10.10.1"
-            role = "sdcOnly"
-        }
-    ]
-    performance_profile = "Compact"
-    rmcache_enabled = true
-    rmcache_size_in_mb = 156
-    rfcache_enabled = true
-    drl_mode = "NonVolatile"
-    protection_domain_id = "4eeb304600000000"
+        resource "powerflex_sds" "sds" {
+	      name = "Tf_SDS_01"
+	      ip_list = [
+		    {
+			ip = "10.247.100.232"
+			role = "all"
+		    },
+		    {
+			ip = "10.10.10.1"
+			role = "sdcOnly"
+		    }
+	      ]
+	      performance_profile = "Compact"
+	      rmcache_enabled = true
+	      rmcache_size_in_mb = 156
+	      rfcache_enabled = true
+	      drl_mode = "NonVolatile"
+	      protection_domain_id = "4eeb304600000000"
 }
     </code>
 </pre>
@@ -1085,10 +1094,7 @@ resource "powerflex_sds" "sds" {
 
 <ul>
         <li>Either protection_domain_id or protection_domain_name is required in order to create / modify SDS.</li>
-        <li><b>Note</b>: SDS creation or update is not atomic. In case of partially completed operations, terraform can mark the resource as tainted.
-One can manually remove the taint and try applying the configuration (after making necessary adjustments).
-<br><b>Warning</b>: If the taint is not removed, terraform will destroy and recreate the resource. </li>
-</ul>
+ </ul>
 
  ## SDC Datasource
 
@@ -2054,25 +2060,23 @@ Managing protection domain on PowerFlex storage system includes getting details 
 </table>
 
 ### Examples
-
-#### Get protection domain details by id
 <pre>
-data "powerflex_protection_domain" "pd1" {						
-    id = "4eeb304600000000"
-}
-</pre>
+    <code>
+    # Get protection domain details by id
+        data "powerflex_protection_domain" "pd1" {						
+		id = "4eeb304600000000"
+	}
 
-#### Get protection domain details by name
-<pre>
-data "powerflex_protection_domain" "pd2" {			
-    name = "domain1"
-}
-</pre>
+    # Get protection domain details by name
+        data "powerflex_protection_domain" "pd2" {			
+		name = "domain1"
+	}
 
-#### Get all protection domains
-<pre>
-data "powerflex_protection_domain" "pd3" {						
+    #Get all protection domains
+       data "powerflex_protection_domain" "pd3" {						
+	}
 }
+    </code>
 </pre>
 
 ### Notes
