@@ -1,6 +1,6 @@
 ---
 title: "Product Guide"
-linkTitle: "PowerStore"
+linkTitle: "Product Guide"
 no_list: true
 description: Documentation for PowerStore
 weight: 1
@@ -121,10 +121,13 @@ Managing volumes on PowerStore storage system includes creating new volume, modi
     <tr>
         <td>capacity_unit</td>
         <td>The Capacity Unit corresponding to the size.</td>
-        <td>Optional and computed</td>
+        <td>Optional and Computed</td>
         <td>String</td>
         <td>GB</td>
-        <td>MB/GB/TB (256 TB max)</td>
+        <td><ul>
+        <li>MB</li>
+        <li>GB</li>
+        <li>TB (256 TB max)</li></ul></td>
     </tr>
     <tr>
         <td>
@@ -133,7 +136,7 @@ Managing volumes on PowerStore storage system includes creating new volume, modi
         <td>
         Unique identifier of the host to be attached to the volume.
         </td>
-        <td>Optional and computed</td>
+        <td>Optional and Computed</td>
         <td>String</td>
         <td>
             <br>
@@ -165,7 +168,7 @@ Managing volumes on PowerStore storage system includes creating new volume, modi
         <td>
             Unique identifier of the host group to be attached to the volume.
         </td>
-        <td>Optional and computed</td>
+        <td>Optional and Computed</td>
         <td>String</td>
         <td>
             <br>
@@ -197,7 +200,7 @@ Managing volumes on PowerStore storage system includes creating new volume, modi
         <td>
             logical unit number when creating an attached volume.
         </td>
-        <td>Optional and computed</td>
+        <td>Optional and Computed</td>
         <td>Int64</td>
         <td>
             <br>
@@ -213,7 +216,7 @@ Managing volumes on PowerStore storage system includes creating new volume, modi
         <td>
             Volume group to add the volume to.
         </td>
-        <td>Optional and computed</td>
+        <td>Optional and Computed</td>
         <td>String</td>
         <td>
             <br>
@@ -259,7 +262,7 @@ Managing volumes on PowerStore storage system includes creating new volume, modi
         <td>
             sector size, in bytes. Only 512-byte and 4096-byte sectors are supported.
         </td>
-        <td>Optional and computed</td>
+        <td>Optional and Computed</td>
         <td>Int64</td>
         <td>512</td>
         <td>
@@ -273,7 +276,7 @@ Managing volumes on PowerStore storage system includes creating new volume, modi
         <td>
             Description of the volume
         </td>
-        <td>Optional and computed</td>
+        <td>Optional and Computed</td>
         <td>String</td>
         <td>
             <br>
@@ -289,7 +292,7 @@ Managing volumes on PowerStore storage system includes creating new volume, modi
         <td>
             Unique identifier of the appliance on which the volume is provisioned
         </td>
-        <td>Optional and computed</td>
+        <td>Optional and Computed</td>
         <td>String</td>
         <td>
             <br>
@@ -322,7 +325,7 @@ Managing volumes on PowerStore storage system includes creating new volume, modi
             Unique identifier of the protection policy assigned to the volume. Only applicable to primary and clone
             volumes.
         </td>
-        <td>Optional and computed</td>
+        <td>Optional and Computed</td>
         <td>String</td>
         <td>
             <br>
@@ -355,7 +358,7 @@ Managing volumes on PowerStore storage system includes creating new volume, modi
         <td>
             Unique identifier of the performance policy assigned to the volume.
         </td>
-        <td>Optional and computed</td>
+        <td>Optional and Computed</td>
         <td>String</td>
         <td>default_medium</td>
         <td>
@@ -477,7 +480,7 @@ Managing volumes on PowerStore storage system includes creating new volume, modi
         <td>
             This attribute indicates the intended use of this volume.
         </td>
-        <td>Optional and computed</td>
+        <td>Optional and Computed</td>
         <td>String</td>
         <td>
             <br>
@@ -661,7 +664,7 @@ Managing snapshot rule on PowerStore storage system includes creating new snapsh
             interval
         </td>
         <td>Interval between snapshots taken by a snapshot rule.</td>
-        <td>Optional and computed</td>
+        <td>Optional and Computed</td>
         <td>String</td>
         <td><br></td>
         <td>Five_Minutes, Fifteen_Minutes, Thirty_Minutes, One_Hour, Two_Hours, Three_Hours,
@@ -674,7 +677,7 @@ Managing snapshot rule on PowerStore storage system includes creating new snapsh
         </td>
         <td><p>Time of the day to take a daily snapshot</p>
             <p>Either the interval parameter or the time_of_day parameter will be set, but not both.</p></td>
-        <td>Optional and computed</td>
+        <td>Optional and Computed</td>
         <td>String</td>
         <td><br></td>
         <td>format "hh:mm" using a 24 hour clock</td>
@@ -686,7 +689,7 @@ Managing snapshot rule on PowerStore storage system includes creating new snapsh
         <td><p>timezone identifier for applying the time zone to the time_of_day for a snapshot
             rule, including any DST effects if applicable</p>
             <p>Applies only when a time_of_day is specified in the snapshot rule.</p></td>
-        <td>Optional and computed</td>
+        <td>Optional and Computed</td>
         <td>String</td>
         <td>UTC</td>
         <td>Etc__GMT_plus_12, US__Samoa, Etc__GMT_plus_11, America__Atka, US__Hawaii, Etc__GMT_plus_10,
@@ -718,7 +721,7 @@ Managing snapshot rule on PowerStore storage system includes creating new snapsh
         <td><p>Days of the week when the snapshot rule should be applied.</p>
             <p>Days are determined based on the UTC time zone, unless the time_of_day and time_zone properties are
                 set.</p></td>
-        <td>Optional and computed</td>
+        <td>Optional and Computed</td>
         <td>List of String</td>
         <td><br></td>
         <td>Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday</td>
@@ -756,7 +759,7 @@ Managing snapshot rule on PowerStore storage system includes creating new snapsh
         </td>
         <td><p>NAS filesystem snapshot access method.</p>
             <p>setting is ignored for volume, virtual_volume, and volume_group snapshots</p></td>
-        <td>Optional and computed</td>
+        <td>Optional and Computed</td>
         <td>String</td>
         <td><br></td>
         <td>Snapshot, Protocol</td>
@@ -765,7 +768,7 @@ Managing snapshot rule on PowerStore storage system includes creating new snapsh
         <td>is_read_only</td>
         <td>Indicates whether this snapshot rule can be modified.
         </td>
-        <td>Optional and computed</td>
+        <td>Optional and Computed</td>
         <td>Bool</td>
         <td>false</td>
         <td><br></td>
@@ -909,7 +912,7 @@ Managing protection policy on PowerStore storage system includes creating new pr
             description
         </td>
         <td><p>Policy description.</p></td>
-        <td>Optional and computed</td>
+        <td>Optional and Computed</td>
         <td>String</td>
         <td><br></td>
         <td><br></td>
@@ -942,7 +945,7 @@ Managing protection policy on PowerStore storage system includes creating new pr
             snapshot_rule_ids
         </td>
         <td>List of the snapshot rule IDs that are associated with this policy.</td>
-        <td>Optional and computed</td>
+        <td>Optional and Computed</td>
         <td>Set of string</td>
         <td><br></td>
         <td><br></td>
@@ -952,7 +955,7 @@ Managing protection policy on PowerStore storage system includes creating new pr
             snapshot_rule_names
         </td>
         <td>List of the snapshot rule names that are associated with this policy.</td>
-        <td>Optional and computed</td>
+        <td>Optional and Computed</td>
         <td>Set of string</td>
         <td><br></td>
         <td><br></td>
@@ -962,7 +965,7 @@ Managing protection policy on PowerStore storage system includes creating new pr
             replication_rule_ids
         </td>
         <td>List of the replication rule IDs that are associated with this policy.</td>
-        <td>Optional and computed</td>
+        <td>Optional and Computed</td>
         <td>Set of string</td>
         <td><br></td>
         <td><br></td>
@@ -972,7 +975,7 @@ Managing protection policy on PowerStore storage system includes creating new pr
             replication_rule_names
         </td>
         <td>List of the replication rule names that are associated with this policy.</td>
-        <td>Optional and computed</td>
+        <td>Optional and Computed</td>
         <td>Set of string</td>
         <td><br></td>
         <td><br></td>
@@ -1093,7 +1096,7 @@ Managing storage container on PowerStore storage system includes creating new st
             container.</p>
             <p>A value of 0 means there is no limit. It is possible to set the quota to a value that overprovisions the
                 amount of space available in the system.</p></td>
-        <td>Optional and computed</td>
+        <td>Optional and Computed</td>
         <td>Int64</td>
         <td><br></td>
         <td><br></td>
@@ -1103,7 +1106,7 @@ Managing storage container on PowerStore storage system includes creating new st
             storage_protocol
         </td>
         <td>The type of Storage Container.</td>
-        <td>Optional and computed</td>
+        <td>Optional and Computed</td>
         <td>String</td>
         <td>SCSI</td>
         <td>SCSI, NVMe</td>
@@ -1115,7 +1118,7 @@ Managing storage container on PowerStore storage system includes creating new st
         <td><p>This is the percentage of the quota that can be consumed before an alert is
             raised.</p>
             <p>Values between 50-100 (inclusive) are allowed</p></td>
-        <td>Optional and computed</td>
+        <td>Optional and Computed</td>
         <td>Int64</td>
         <td><br></td>
         <td><br></td>
