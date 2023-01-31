@@ -1,0 +1,55 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dell Technologies – Platforms</title>
+    <link>https://krunal-thakkar.github.io/terraform-docs/docs/storage/platforms/</link>
+    <description>Recent content in Platforms on Dell Technologies</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://krunal-thakkar.github.io/terraform-docs/docs/storage/platforms/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: PowerFlex</title>
+      <link>https://krunal-thakkar.github.io/terraform-docs/docs/storage/platforms/powerflex/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://krunal-thakkar.github.io/terraform-docs/docs/storage/platforms/powerflex/</guid>
+      <description>
+        
+        
+        &lt;p&gt;&lt;a href=&#34;../powerflex/product_guide/&#34;&gt;Product Guide&lt;/a&gt;
+&lt;br&gt;PowerFlex Product Guide Documentation&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;../powerflex/readme/&#34;&gt;ReadMe&lt;/a&gt;
+&lt;br&gt;PowerFlex ReadMe Documentation&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;../powerflex/release_notes/&#34;&gt;Release Notes&lt;/a&gt;
+&lt;br&gt;PowerFlex Release Notes Documentation&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: PowerStore</title>
+      <link>https://krunal-thakkar.github.io/terraform-docs/docs/storage/platforms/powerstore/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://krunal-thakkar.github.io/terraform-docs/docs/storage/platforms/powerstore/</guid>
+      <description>
+        
+        
+        &lt;p&gt;&lt;a href=&#34;../powerstore/product_guide/&#34;&gt;Product Guide&lt;/a&gt;
+&lt;br&gt;PowerStore Product Guide Documentation&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;../powerstore/readme/&#34;&gt;ReadMe&lt;/a&gt;
+&lt;br&gt;PowerStore ReadMe Documentation&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;../powerstore/release_notes/&#34;&gt;Release Notes&lt;/a&gt;
+&lt;br&gt;PowerStore Release Notes Documentation&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

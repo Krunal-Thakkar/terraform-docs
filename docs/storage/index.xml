@@ -1,0 +1,88 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dell Technologies – Storage</title>
+    <link>https://krunal-thakkar.github.io/terraform-docs/docs/storage/</link>
+    <description>Recent content in Storage on Dell Technologies</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://krunal-thakkar.github.io/terraform-docs/docs/storage/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Introduction</title>
+      <link>https://krunal-thakkar.github.io/terraform-docs/docs/storage/introduction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://krunal-thakkar.github.io/terraform-docs/docs/storage/introduction/</guid>
+      <description>
+        
+        
+        &lt;p&gt;In the fast-moving, competitive and technology-driven business environment, companies are adopting DevOps practices to accelerate application delivery and rapidly deliver new capabilities to respond to pressing business needs. This growing emphasis on DevOps is placing an extra burden on storage infrastructure teams as they are expected to offer:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Automated, reliable and consistent business processes&lt;/li&gt;
+&lt;li&gt;Dynamic, automated, code driven storage infrastructure to manage, control and administer storage rapidly&lt;/li&gt;
+&lt;li&gt;Transparent workflows with the flexibility to use tools/orchestrators of choice&lt;/li&gt;
+&lt;li&gt;Lower TCO&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Dell Technologies DevOps initiative is targeted at enabling our customers so that they can provide access to fast, automated and agile storage infrastructure to their App Developers and the IT Operations teams.&lt;/p&gt;
+&lt;p&gt;Terraform is a popular Infrastructure as Code (IaC) tool that enables IT Ops/Dev Ops personnel securely and efficiently build, configure and deploy infrastructure configuration using human-readable configuration files or plans written in Hashicorp Configuration Language (HCL). These plans can then be versioned, reused and shared thus enabling a consistent workflow to provision and manage infrastructure. Terraform Providers are plugins that implement resource types across different cloud platforms and vendors.&lt;/p&gt;
+&lt;p&gt;Within the DevOps initiative, this program includes development of Terraform providers for Storage arrays. Terraform providers for Storage Arrays will enable the operations to rapidly provision storage infrastructure with accuracy to respond to the fast-paced needs of DevOps engineers. We will be developing the Terraform providers in phases. In Phase I, we will be developing the following terraforms providers :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;b&gt;Terraform Provider for PowerStore:&lt;/b&gt; A custom &#34;PowerStore&#34; Terraform provider will provide resources and data sources that can be consumed to write a Terraform plan to provision and deploy PowerStore arrays. This enables DevOps users to manage their PowerStore infrastructure in a repeatable, predictable, scalable manner.&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;Terraform Provider for PowerFlex:&lt;/b&gt; A custom &#34;PowerFlex&#34; Terraform provider will provide resources and data sources that can be consumed to write a Terraform plan using a declarative syntax to provision and deploy PowerFlex. This enables DevOps users to manage their PowerFlex infrastructure in a repeatable, predictable, scalable manner.&lt;/li&gt;
+&lt;/ul&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Platforms</title>
+      <link>https://krunal-thakkar.github.io/terraform-docs/docs/storage/platforms/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://krunal-thakkar.github.io/terraform-docs/docs/storage/platforms/</guid>
+      <description>
+        
+        
+        &lt;p&gt;&lt;a href=&#34;../platforms/powerflex&#34;&gt;PowerFlex&lt;/a&gt;
+&lt;br&gt;Documentations for PowerFlex&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;../platforms/powerstore&#34;&gt;PowerStore&lt;/a&gt;
+&lt;br&gt;Documentations for PowerStore&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Support</title>
+      <link>https://krunal-thakkar.github.io/terraform-docs/docs/storage/support/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://krunal-thakkar.github.io/terraform-docs/docs/storage/support/</guid>
+      <description>
+        
+        
+        &lt;p&gt;For any Terraform provider issues, questions or feedback, join the Dell Technologies Automation community.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Licensing</title>
+      <link>https://krunal-thakkar.github.io/terraform-docs/docs/storage/licensing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://krunal-thakkar.github.io/terraform-docs/docs/storage/licensing/</guid>
+      <description>
+        
+        
+        &lt;p&gt;Terraform Provider is released and licensed under the MPL 2.0 license.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>
