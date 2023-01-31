@@ -16,11 +16,11 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://krunal-thakkar.github.io/terraform-docs/docs/storage/platforms/powerstore/product_guide/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2023-01-30T08:11:33-05:00" /><meta property="og:site_name" content="Dell Technologies" />
+<meta property="article:modified_time" content="2023-01-31T16:42:05+05:30" /><meta property="og:site_name" content="Dell Technologies" />
 <meta itemprop="name" content="Product Guide">
 <meta itemprop="description" content="Documentation for PowerStore">
-<meta itemprop="dateModified" content="2023-01-30T08:11:33-05:00" />
-<meta itemprop="wordCount" content="2618">
+<meta itemprop="dateModified" content="2023-01-31T16:42:05+05:30" />
+<meta itemprop="wordCount" content="2744">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Product Guide"/>
 <meta name="twitter:description" content="Documentation for PowerStore"/>
@@ -73,7 +73,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/terraform-docs/offline-search-index.42a5a15b72c0535f62f1e3af82dfb094.json"
+  data-offline-search-index-json-src="/terraform-docs/offline-search-index.344f9d39a1cecbfe83a075fc9a8f20f5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -95,7 +95,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/terraform-docs/offline-search-index.42a5a15b72c0535f62f1e3af82dfb094.json"
+  data-offline-search-index-json-src="/terraform-docs/offline-search-index.344f9d39a1cecbfe83a075fc9a8f20f5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -135,7 +135,7 @@
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-terraform-docsdocsstorageplatformspowerstorereadme-li">
   <a href="/terraform-docs/docs/storage/platforms/powerstore/readme/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-terraform-docsdocsstorageplatformspowerstorereadme"><span class="">ReadMe</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-terraform-docsdocsstorageplatformspowerstorerelease_notes-li">
-  <a href="/terraform-docs/docs/storage/platforms/powerstore/release_notes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-terraform-docsdocsstorageplatformspowerstorerelease_notes"><span class=""></span></a>
+  <a href="/terraform-docs/docs/storage/platforms/powerstore/release_notes/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-terraform-docsdocsstorageplatformspowerstorerelease_notes"><span class="">Release Notes</span></a>
 </li>
   </ul>
 </li>
@@ -170,7 +170,7 @@
 
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#volume-resource">Volume Resource</a>
+    <li><a href="#provider">Provider</a>
       <ul>
         <li><a href="#synopsis">Synopsis</a></li>
         <li><a href="#list-of-parameters">List Of Parameters</a></li>
@@ -178,7 +178,7 @@
         <li><a href="#notes">Notes</a></li>
       </ul>
     </li>
-    <li><a href="#snapshotrule-resource">SnapshotRule Resource</a>
+    <li><a href="#volume-resource">Volume Resource</a>
       <ul>
         <li><a href="#synopsis-1">Synopsis</a></li>
         <li><a href="#list-of-parameters-1">List Of Parameters</a></li>
@@ -186,7 +186,7 @@
         <li><a href="#notes-1">Notes</a></li>
       </ul>
     </li>
-    <li><a href="#protectionpolicy-resource">ProtectionPolicy Resource</a>
+    <li><a href="#snapshotrule-resource">SnapshotRule Resource</a>
       <ul>
         <li><a href="#synopsis-2">Synopsis</a></li>
         <li><a href="#list-of-parameters-2">List Of Parameters</a></li>
@@ -194,7 +194,7 @@
         <li><a href="#notes-2">Notes</a></li>
       </ul>
     </li>
-    <li><a href="#storagecontainer-resource">StorageContainer Resource</a>
+    <li><a href="#protectionpolicy-resource">ProtectionPolicy Resource</a>
       <ul>
         <li><a href="#synopsis-3">Synopsis</a></li>
         <li><a href="#list-of-parameters-3">List Of Parameters</a></li>
@@ -202,12 +202,20 @@
         <li><a href="#notes-3">Notes</a></li>
       </ul>
     </li>
-    <li><a href="#volume-datasource">Volume DataSource</a>
+    <li><a href="#storagecontainer-resource">StorageContainer Resource</a>
       <ul>
         <li><a href="#synopsis-4">Synopsis</a></li>
         <li><a href="#list-of-parameters-4">List Of Parameters</a></li>
         <li><a href="#examples-4">Examples</a></li>
         <li><a href="#notes-4">Notes</a></li>
+      </ul>
+    </li>
+    <li><a href="#volume-datasource">Volume DataSource</a>
+      <ul>
+        <li><a href="#synopsis-5">Synopsis</a></li>
+        <li><a href="#list-of-parameters-5">List Of Parameters</a></li>
+        <li><a href="#examples-5">Examples</a></li>
+        <li><a href="#notes-5">Notes</a></li>
       </ul>
     </li>
   </ul>
@@ -269,7 +277,7 @@
 <hr>
 <h1 id="contents">Contents</h1>
 <ul>
-<li><a href="#volume-resource">Volume Resource</a>
+<li><a href="#provider">Provider</a>
 <ul>
 <li><a href="#synopsis">Synopsis</a></li>
 <li><a href="#list-of-parameters">List Of Parameters</a></li>
@@ -277,7 +285,7 @@
 <li><a href="#notes">Notes</a></li>
 </ul>
 </li>
-<li><a href="#snapshotrule-resource">SnapshotRule Resource</a>
+<li><a href="#volume-resource">Volume Resource</a>
 <ul>
 <li><a href="#synopsis-1">Synopsis</a></li>
 <li><a href="#list-of-parameters-1">List Of Parameters</a></li>
@@ -285,7 +293,7 @@
 <li><a href="#notes-1">Notes</a></li>
 </ul>
 </li>
-<li><a href="#protectionpolicy-resource">ProtectionPolicy Resource</a>
+<li><a href="#snapshotrule-resource">SnapshotRule Resource</a>
 <ul>
 <li><a href="#synopsis-2">Synopsis</a></li>
 <li><a href="#list-of-parameters-2">List Of Parameters</a></li>
@@ -293,7 +301,7 @@
 <li><a href="#notes-2">Notes</a></li>
 </ul>
 </li>
-<li><a href="#storagecontainer-resource">StorageContainer Resource</a>
+<li><a href="#protectionpolicy-resource">ProtectionPolicy Resource</a>
 <ul>
 <li><a href="#synopsis-3">Synopsis</a></li>
 <li><a href="#list-of-parameters-3">List Of Parameters</a></li>
@@ -301,7 +309,7 @@
 <li><a href="#notes-3">Notes</a></li>
 </ul>
 </li>
-<li><a href="#volume-datasource">Volume DataSource</a>
+<li><a href="#storagecontainer-resource">StorageContainer Resource</a>
 <ul>
 <li><a href="#synopsis-4">Synopsis</a></li>
 <li><a href="#list-of-parameters-4">List Of Parameters</a></li>
@@ -309,13 +317,100 @@
 <li><a href="#notes-4">Notes</a></li>
 </ul>
 </li>
+<li><a href="#volume-datasource">Volume DataSource</a>
+<ul>
+<li><a href="#synopsis-5">Synopsis</a></li>
+<li><a href="#list-of-parameters-5">List Of Parameters</a></li>
+<li><a href="#examples-5">Examples</a></li>
+<li><a href="#notes-5">Notes</a></li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="provider">Provider</h2>
+<p>Configure the provider on Dell Technologies PowerStore</p>
+<h3 id="synopsis">Synopsis</h3>
+<p>To create any resource / datasource , we need to provide authentication details to connect to the PowerStore</p>
+<h3 id="list-of-parameters">List Of Parameters</h3>
+<table>
+    <thead>
+    <tr>
+        <th>
+            <div>Parameter Name</div>
+        </th>
+        <th>
+            <div>Description</div>
+        </th>
+        <th>
+            <div>Required/Optional/Computed</div>
+        </th>
+        <th>
+            <div>Type</div>
+        </th>
+        <th>
+            <div>Default Value</div>
+        </th>
+        <th>
+            <div>Choices</div>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>endpoint</td>
+        <td>The endpoint to which it needs to be connected.</td>
+        <td>Required</td>
+        <td>string</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>username</td>
+        <td>The username required for authentication.</td>
+        <td>Required&nbsp;</td>
+        <td>string</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>password</td>
+        <td>The password required for the authentication.&nbsp;</td>
+        <td>Required</td>
+        <td>string</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>insecure</td>
+        <td>Specifies if the user wants to do SSL verification.&nbsp;</td>
+        <td>Optional</td>
+        <td>bool&nbsp;</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+   </tbody>
+</table>
+<h3 id="examples">Examples</h3>
+<pre>
+    <code>
+        provider "powerstore" {
+            username = "username"
+            password = "password"
+            endpoint = "10.10.10.1"
+            insecure = true
+        }
+    </code>
+</pre>
+<h3 id="notes">Notes</h3>
+<ul>
+<li>Provider details mandatorily needs to be provided to autnenticate and connect to the PowerStore Storage system before creating any resource / datasource</li>
 </ul>
 <hr>
 <h2 id="volume-resource">Volume Resource</h2>
 <p>Manage Volume on Dell Technologies PowerStore</p>
-<h3 id="synopsis">Synopsis</h3>
+<h3 id="synopsis-1">Synopsis</h3>
 <p>Managing volumes on PowerStore storage system includes creating new volume, modifying attributes of the volume, importing existing volume and deleting the volume.</p>
-<h3 id="list-of-parameters">List Of Parameters</h3>
+<h3 id="list-of-parameters-1">List Of Parameters</h3>
 <table>
     <thead>
     <tr>
@@ -817,7 +912,7 @@
     </tr>
     </tbody>
 </table>
-<h3 id="examples">Examples</h3>
+<h3 id="examples-1">Examples</h3>
 <pre tabindex="0"><code>- With required attributes only
 
     resource &#34;powerstore_volume&#34; &#34;test&#34; {
@@ -861,7 +956,7 @@
         app_type=&#34;Relational_Databases_Other&#34;
         app_type_other=&#34;db1&#34;
     }
-</code></pre><h3 id="notes">Notes</h3>
+</code></pre><h3 id="notes-1">Notes</h3>
 <ol>
 <li>Only one either host_id or host_grop_id can be present at a time. logical_unit_number is used only when either of the host_id or host_group_id are present.</li>
 <li>migration_session_id, metro_replication_session_id, is_host_access_available, protection_data instance, appliance, protection_policy, migration_session, mapped_volumes, volume_groups, datastores are not taken since they are all nested instances and will be covered with data source.
@@ -871,9 +966,9 @@ location_history, type_l10n, state_l10n, node_affinity_l10n, app_type_l10n are n
 <hr>
 <h2 id="snapshotrule-resource">SnapshotRule Resource</h2>
 <p>Manage Snapshot Rule on Dell Technologies PowerStore</p>
-<h3 id="synopsis-1">Synopsis</h3>
+<h3 id="synopsis-2">Synopsis</h3>
 <p>Managing snapshot rule on PowerStore storage system includes creating new snapshot rule, modifying attributes of the snapshot rule, importing existing snapshot rule and deleting the snapshot rule.</p>
-<h3 id="list-of-parameters-1">List Of Parameters</h3>
+<h3 id="list-of-parameters-2">List Of Parameters</h3>
 <table>
     <thead>
     <tr>
@@ -1069,7 +1164,7 @@ location_history, type_l10n, state_l10n, node_affinity_l10n, app_type_l10n are n
     </tr>
     </tbody>
 </table>
-<h3 id="examples-1">Examples</h3>
+<h3 id="examples-2">Examples</h3>
 <pre tabindex="0"><code>- With required attributes only (using time_of_day):
 
     resource &#34;powerstore_snapshotrule&#34; &#34;test&#34; {
@@ -1097,7 +1192,7 @@ location_history, type_l10n, state_l10n, node_affinity_l10n, app_type_l10n are n
         is_read_only = false
         delete_snaps = true
     }
-</code></pre><h3 id="notes-1">Notes</h3>
+</code></pre><h3 id="notes-2">Notes</h3>
 <ol>
 <li>We are allowing empty string as valid value for timezone and nas_access_type</li>
 <li>Currently due to bug on powerstore (reported) , cannot set is_read_only parameter as true , handling via a workaround  TFM-154 - Powerstore : Remove &ldquo;is_read_only&rdquo; and nasaccesstype discrepancy in snapshot_rule template in request and response DEFINED</li>
@@ -1110,9 +1205,9 @@ location_history, type_l10n, state_l10n, node_affinity_l10n, app_type_l10n are n
 <hr>
 <h2 id="protectionpolicy-resource">ProtectionPolicy Resource</h2>
 <p>Manage Protection Policy on Dell Technologies PowerStore</p>
-<h3 id="synopsis-2">Synopsis</h3>
+<h3 id="synopsis-3">Synopsis</h3>
 <p>Managing protection policy on PowerStore storage system includes creating new protection policy, modifying attributes of the protection policy, importing existing protection policy and deleting the protection policy.</p>
-<h3 id="list-of-parameters-2">List Of Parameters</h3>
+<h3 id="list-of-parameters-3">List Of Parameters</h3>
 <table>
     <thead>
     <tr>
@@ -1232,7 +1327,7 @@ location_history, type_l10n, state_l10n, node_affinity_l10n, app_type_l10n are n
     </tr>
     </tbody>
 </table>
-<h3 id="examples-2">Examples</h3>
+<h3 id="examples-3">Examples</h3>
 <pre tabindex="0"><code>- With required attributes only (associating replication rule using Name):
 
     resource &#34;powerstore_protectionpolicy&#34; &#34;test&#34; 
@@ -1268,7 +1363,7 @@ location_history, type_l10n, state_l10n, node_affinity_l10n, app_type_l10n are n
         snapshot_rule_names = [&#34;test_snapshotrule_1&#34;]
         replication_rule_ids = [&#34;5d45b173-9a85-473e-8ab8-e107f8b8085e&#34;]
     }
-</code></pre><h3 id="notes-2">Notes</h3>
+</code></pre><h3 id="notes-3">Notes</h3>
 <ol>
 <li>Either of replication_rule_ids, replication_rule_names, snapshot_rule_ids or snapshot_rule_names is required.</li>
 <li>replication_rule_ids and replication_rule_names are mutually exclusive attributes and both cannot be specified in one resource block.</li>
@@ -1279,9 +1374,9 @@ location_history, type_l10n, state_l10n, node_affinity_l10n, app_type_l10n are n
 <hr>
 <h2 id="storagecontainer-resource">StorageContainer Resource</h2>
 <p>Manage Storage Container on Dell Technologies PowerStore</p>
-<h3 id="synopsis-3">Synopsis</h3>
+<h3 id="synopsis-4">Synopsis</h3>
 <p>Managing storage container on PowerStore storage system includes creating new storage container, modifying attributes of the storage container, importing existing storage container and deleting the storage container.</p>
-<h3 id="list-of-parameters-3">List Of Parameters</h3>
+<h3 id="list-of-parameters-4">List Of Parameters</h3>
 <table>
     <thead>
     <tr>
@@ -1365,7 +1460,7 @@ location_history, type_l10n, state_l10n, node_affinity_l10n, app_type_l10n are n
     </tr>
     </tbody>
 </table>
-<h3 id="examples-3">Examples</h3>
+<h3 id="examples-4">Examples</h3>
 <pre tabindex="0"><code>- With required attributes only:
 
     resource &#34;powerstore_storagecontainer&#34; &#34;test&#34; {
@@ -1381,7 +1476,7 @@ location_history, type_l10n, state_l10n, node_affinity_l10n, app_type_l10n are n
         storage_protocol = &#34;SCSI&#34;
         high_water_mark = 70
     }
-</code></pre><h3 id="notes-3">Notes</h3>
+</code></pre><h3 id="notes-4">Notes</h3>
 <ol>
 <li>virtual_volumes , replication_groups , datastores , destinations , vsphere_host_ids will be covered with data source.</li>
 <li>storage_protocol_l10n is not taken because it is not required as of now will be added later if customer requirement comes.</li>
@@ -1392,9 +1487,9 @@ location_history, type_l10n, state_l10n, node_affinity_l10n, app_type_l10n are n
 <hr>
 <h2 id="volume-datasource">Volume DataSource</h2>
 <p>Manage Volume DataSource on Dell Technologies PowerStore</p>
-<h3 id="synopsis-4">Synopsis</h3>
+<h3 id="synopsis-5">Synopsis</h3>
 <p>Managing volume datasource on PowerStore storage system includes fetching details of volume using volume name or volume id.</p>
-<h3 id="list-of-parameters-4">List Of Parameters</h3>
+<h3 id="list-of-parameters-5">List Of Parameters</h3>
 <table>
     <thead>
     <tr>
@@ -1801,7 +1896,7 @@ location_history, type_l10n, state_l10n, node_affinity_l10n, app_type_l10n are n
     </tr>
     </tbody>
 </table>
-<h3 id="examples-4">Examples</h3>
+<h3 id="examples-5">Examples</h3>
 <pre tabindex="0"><code>- Get volume details using volume name:
 
     data &#34;powerstore_volume&#34; &#34;test1&#34; 
@@ -1815,7 +1910,7 @@ location_history, type_l10n, state_l10n, node_affinity_l10n, app_type_l10n are n
     {
 	id = &#34;a0b0c773-1c50-425a-89dc-aef9162ec787&#34;
     }
-</code></pre><h3 id="notes-4">Notes</h3>
+</code></pre><h3 id="notes-5">Notes</h3>
 <ol>
 <li>Either of volume id or volume name must be present to fetch details of specific volume.</li>
 <li>Details of all the volumes would be fetched if no parameter is specified i.e empty block.</li>

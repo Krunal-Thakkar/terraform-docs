@@ -9,21 +9,21 @@
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
 <link rel="icon" type="image/png" href="/terraform-docs/favicons/favicon-16x16.png" sizes="16x16">
 
-<title>Dell Technologies</title>
-<meta name="description" content="">
-<meta property="og:title" content="" />
-<meta property="og:description" content="" />
+<title>Release Notes | Dell Technologies</title>
+<meta name="description" content="Release Notes page">
+<meta property="og:title" content="Release Notes" />
+<meta property="og:description" content="Release Notes page" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://krunal-thakkar.github.io/terraform-docs/docs/storage/platforms/powerstore/release_notes/" /><meta property="article:section" content="docs" />
 
-<meta property="article:modified_time" content="2023-01-30T06:24:26-05:00" /><meta property="og:site_name" content="Dell Technologies" />
-<meta itemprop="name" content="">
-<meta itemprop="description" content="">
-<meta itemprop="dateModified" content="2023-01-30T06:24:26-05:00" />
-<meta itemprop="wordCount" content="0">
+<meta property="article:modified_time" content="2023-01-31T16:42:05+05:30" /><meta property="og:site_name" content="Dell Technologies" />
+<meta itemprop="name" content="Release Notes">
+<meta itemprop="description" content="Release Notes page">
+<meta itemprop="dateModified" content="2023-01-31T16:42:05+05:30" />
+<meta itemprop="wordCount" content="286">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content=""/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Release Notes"/>
+<meta name="twitter:description" content="Release Notes page"/>
 
 
 
@@ -73,7 +73,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/terraform-docs/offline-search-index.42a5a15b72c0535f62f1e3af82dfb094.json"
+  data-offline-search-index-json-src="/terraform-docs/offline-search-index.344f9d39a1cecbfe83a075fc9a8f20f5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -95,7 +95,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/terraform-docs/offline-search-index.42a5a15b72c0535f62f1e3af82dfb094.json"
+  data-offline-search-index-json-src="/terraform-docs/offline-search-index.344f9d39a1cecbfe83a075fc9a8f20f5.json"
   data-offline-search-base-href="/"
   data-offline-search-max-results="10"
 >
@@ -135,7 +135,7 @@
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-terraform-docsdocsstorageplatformspowerstorereadme-li">
   <a href="/terraform-docs/docs/storage/platforms/powerstore/readme/" class="align-left pl-0 td-sidebar-link td-sidebar-link__page" id="m-terraform-docsdocsstorageplatformspowerstorereadme"><span class="">ReadMe</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-terraform-docsdocsstorageplatformspowerstorerelease_notes-li">
-  <a href="/terraform-docs/docs/storage/platforms/powerstore/release_notes/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-terraform-docsdocsstorageplatformspowerstorerelease_notes"><span class="td-sidebar-nav-active-item"></span></a>
+  <a href="/terraform-docs/docs/storage/platforms/powerstore/release_notes/" class="align-left pl-0 active td-sidebar-link td-sidebar-link__page" id="m-terraform-docsdocsstorageplatformspowerstorerelease_notes"><span class="td-sidebar-nav-active-item">Release Notes</span></a>
 </li>
   </ul>
 </li>
@@ -167,6 +167,24 @@
             
 
 
+
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#release-notes-100">Release Notes 1.0.0</a></li>
+      </ul>
+    </li>
+    <li><a href="#content">Content</a></li>
+    <li><a href="#revision-history">Revision history</a></li>
+    <li><a href="#product-description">Product Description</a></li>
+    <li><a href="#new-features--enhancements">New features &amp; enhancements</a></li>
+    <li><a href="#known-issues">Known issues</a></li>
+    <li><a href="#limitations">Limitations</a></li>
+    <li><a href="#distribution">Distribution</a></li>
+    <li><a href="#documentation">Documentation</a></li>
+  </ul>
+</nav>
 
 
 
@@ -211,16 +229,86 @@
     <a href="https://krunal-thakkar.github.io/terraform-docs/docs/storage/platforms/powerstore/">PowerStore</a>
   </li>
   <li class="breadcrumb-item active" aria-current="page">
-    <a href="https://krunal-thakkar.github.io/terraform-docs/docs/storage/platforms/powerstore/release_notes/" aria-disabled="true" class="btn-link disabled"></a>
+    <a href="https://krunal-thakkar.github.io/terraform-docs/docs/storage/platforms/powerstore/release_notes/" aria-disabled="true" class="btn-link disabled">Release Notes</a>
   </li>
   </ol>
 </nav>
             
 <div class="td-content">
-	<h1></h1>
+	<h1>Release Notes</h1>
 
 	       
-	
+	<h1 id="terraform-provider-for-dell-technologies-powerstore"><strong>Terraform Provider for Dell Technologies PowerStore</strong></h1>
+<h3 id="release-notes-100">Release Notes 1.0.0</h3>
+<blockquote>
+<p>© 2023 Dell Inc. or its subsidiaries. All rights reserved. Dell,
+and other trademarks are trademarks of Dell Inc. or its
+subsidiaries. Other trademarks may be trademarks of their respective
+owners.</p>
+</blockquote>
+<h2 id="content">Content</h2>
+<p>These release notes contain supplemental information about Terraform Provider for Dell Technologies(Dell) PowerStore.</p>
+<ul>
+<li><a href="#revision-history">Revision History</a></li>
+<li><a href="#product-description">Product Description</a></li>
+<li><a href="#new-features--enhancements">New Features &amp; Enhancements</a></li>
+<li><a href="#known-issues">Known Issues</a></li>
+<li><a href="#limitations">Limitations</a></li>
+<li><a href="#distribution">Distribution</a></li>
+<li><a href="#documentation">Documentation</a></li>
+</ul>
+<h2 id="revision-history">Revision history</h2>
+<p>The table in this section lists the revision history of this document.</p>
+<p>Table 1. Revision history</p>
+<table>
+<thead>
+<tr>
+<th>Revision</th>
+<th>Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>January 2023</td>
+<td>Current release of Terraform Provider for Dell Technologies PowerStore 1.0.0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="product-description">Product Description</h2>
+<p>The Terraform Provider for Dell Technologies (Dell) PowerStore allows Data Center and IT administrators to use Hashicorp Terraform to automate and orchestrate the provisioning and management of Dell PowerStore storage systems.</p>
+<p>The Terraform Provider can be used to manage volumes, snapshot rules, protection policies and storage containers.</p>
+<h2 id="new-features--enhancements">New features &amp; enhancements</h2>
+<p>List of Resources and supported operations in Terraform Provider for Dell PowerStore</p>
+<ul>
+<li>Volume - Create, Read, Update, Delete, Import</li>
+<li>Snapshot Rule - Create, Read, Update, Delete, Import</li>
+<li>Protection Policy - Create, Read, Update, Delete, Import</li>
+<li>Storage Container - Create, Read, Update, Delete, Import</li>
+</ul>
+<p>List of DataSources and supported operations in Terraform Provider for Dell PowerStore</p>
+<ul>
+<li>Volume - Read</li>
+</ul>
+<h2 id="known-issues">Known issues</h2>
+<ul>
+<li>Creating/Modifying protection policy with replication or snapshot rule throws inconsistent result after apply error.</li>
+<li>Modification for few attributes of volume resource is giving state and plan mismatch error.</li>
+</ul>
+<h2 id="limitations">Limitations</h2>
+<p>There are no known limitations.</p>
+<h2 id="distribution">Distribution</h2>
+<p>The software package is available for download from the <a href="https://github.com/dell/terraform-provider-powerstore/tree/1.0.0">Terraform Provider for PowerStore GitHub</a> page.</p>
+<h2 id="documentation">Documentation</h2>
+<p>The documentation is available on <a href="https://github.com/dell/terraform-provider-powerstore/tree/1.0.0/docs">Terraform Provider for PowerStore GitHub</a>
+page. It includes these:</p>
+<ul>
+<li>README</li>
+<li>Release Notes (this document)</li>
+<li>Product Guide</li>
+</ul>
+
 	
 	
 
