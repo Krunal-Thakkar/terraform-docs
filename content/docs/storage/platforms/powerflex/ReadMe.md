@@ -23,9 +23,9 @@ The Terraform Provide for PowerFlex is released and licensed under the MPL-2.0 l
 
 ## Prerequisites
 
-| **Terraform Provider** | **PowerFlex/VxFlex OS Version** | **OS** | **Terraform** | **Golang** | **Terraform Plugin Framework version**              |
+| **Terraform Provider** | **PowerFlex/VxFlex OS Version** | **OS** | **Terraform** | **Golang** | **goscaleio commit id**              |
 |---------------------|-----------------------|-------|--------------------|--------------------------|--------------------|
-| v1.0.0 | 3.6 | ubuntu22.04 <br> <br> rhel8.x <br> rhel7.x | 1.3.2 <br> 1.2.9 <br> 1.3.2 <br> 1.2.9 <br> | 1.19.x | 1.0.1
+| v1.0.0 | 3.6 | Ubuntu22.04 <br> RHEL8.x <br> RHEL7.x | 1.3.2 <br> 1.2.9 | 1.19.x | bfd3fae12e7b
 
 ## List of DataSources in Terraform Provider for Dell PowerFlex
   * SDC
@@ -53,7 +53,7 @@ Create a file called `main.tf` in your workspace with the following contents
 terraform {
   required_providers {
     powerflex = {
-      version = "0.0.1"
+      version = "1.0.0"
       source  = "registry.terraform.io/dell/powerflex"
     }
   }
