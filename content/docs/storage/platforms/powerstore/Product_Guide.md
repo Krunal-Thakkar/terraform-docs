@@ -3,39 +3,129 @@ title: "Product Guide"
 linkTitle: "Product Guide"
 no_list: true
 description: Documentation for PowerStore
-weight: 1
+weight: 5
 ---
 
 # Terraform Modules for Dell PowerStore
 --------------
 # Contents
-*   [Volume Resource](#volume-resource)
+*   [Provider](#provider)
     *   [Synopsis](#synopsis)
     *   [List Of Parameters](#list-of-parameters)
     *   [Examples](#examples)
     *   [Notes](#notes)
-*   [SnapshotRule Resource](#snapshotrule-resource)
+*   [Volume Resource](#volume-resource)
     *   [Synopsis](#synopsis-1)
     *   [List Of Parameters](#list-of-parameters-1)
     *   [Examples](#examples-1)
     *   [Notes](#notes-1)
-*   [ProtectionPolicy Resource](#protectionpolicy-resource)
+*   [SnapshotRule Resource](#snapshotrule-resource)
     *   [Synopsis](#synopsis-2)
     *   [List Of Parameters](#list-of-parameters-2)
     *   [Examples](#examples-2)
     *   [Notes](#notes-2)
-*   [StorageContainer Resource](#storagecontainer-resource)
+*   [ProtectionPolicy Resource](#protectionpolicy-resource)
     *   [Synopsis](#synopsis-3)
     *   [List Of Parameters](#list-of-parameters-3)
     *   [Examples](#examples-3)
     *   [Notes](#notes-3)
-*   [Volume DataSource](#volume-datasource)
+*   [StorageContainer Resource](#storagecontainer-resource)
     *   [Synopsis](#synopsis-4)
     *   [List Of Parameters](#list-of-parameters-4)
     *   [Examples](#examples-4)
     *   [Notes](#notes-4)
+*   [Volume DataSource](#volume-datasource)
+    *   [Synopsis](#synopsis-5)
+    *   [List Of Parameters](#list-of-parameters-5)
+    *   [Examples](#examples-5)
+    *   [Notes](#notes-5)
 
 
+--------------
+
+## Provider
+Configure the provider on Dell Technologies PowerStore
+
+### Synopsis
+To create any resource / datasource , we need to provide authentication details to connect to the PowerStore 
+
+### List Of Parameters
+<table>
+    <thead>
+    <tr>
+        <th>
+            <div>Parameter Name</div>
+        </th>
+        <th>
+            <div>Description</div>
+        </th>
+        <th>
+            <div>Required/Optional/Computed</div>
+        </th>
+        <th>
+            <div>Type</div>
+        </th>
+        <th>
+            <div>Default Value</div>
+        </th>
+        <th>
+            <div>Choices</div>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>endpoint</td>
+        <td>The endpoint to which it needs to be connected.</td>
+        <td>Required</td>
+        <td>string</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>username</td>
+        <td>The username required for authentication.</td>
+        <td>Required&nbsp;</td>
+        <td>string</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>password</td>
+        <td>The password required for the authentication.&nbsp;</td>
+        <td>Required</td>
+        <td>string</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>insecure</td>
+        <td>Specifies if the user wants to do SSL verification.&nbsp;</td>
+        <td>Optional</td>
+        <td>bool&nbsp;</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+   </tbody>
+</table>
+
+### Examples
+<pre>
+    <code>
+        provider "powerstore" {
+            username = "username"
+            password = "password"
+            endpoint = "10.10.10.1"
+            insecure = true
+        }
+    </code>
+</pre>
+
+
+### Notes
+<ul>
+<li>Provider details mandatorily needs to be provided to autnenticate and connect to the PowerStore Storage system before creating any resource / datasource</li>
+</ul>
 
 --------------
 
