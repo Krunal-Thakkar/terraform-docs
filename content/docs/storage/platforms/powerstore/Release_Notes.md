@@ -1,3 +1,9 @@
+---
+title: Release Notes
+Description: Release Notes page
+weight: 5
+---
+
 **Terraform Provider for Dell Technologies PowerStore**
 =========================================
 ### Release Notes 1.0.0
