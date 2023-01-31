@@ -12,64 +12,153 @@ weight: 20
 
 --------------
 # Contents
-*   [Volume Resource](#volume-resource)
+*   [Provider](#provider)
     *   [Synopsis](#synopsis)
     *   [List Of Parameters](#list-of-parameters)
     *   [Examples](#examples)
     *   [Notes](#notes)
-*   [SDC Resource](#sdc-resource)
+*   [Volume Resource](#volume-resource)
     *   [Synopsis](#synopsis-1)
     *   [List Of Parameters](#list-of-parameters-1)
     *   [Examples](#examples-1)
     *   [Notes](#notes-1)
-*   [Storage Pool Resource](#storage-pool-resource)
+*   [SDC Resource](#sdc-resource)
     *   [Synopsis](#synopsis-2)
     *   [List Of Parameters](#list-of-parameters-2)
     *   [Examples](#examples-2)
     *   [Notes](#notes-2)
-*   [Snapshot Resource](#snapshot-resource)
+*   [Storage Pool Resource](#storage-pool-resource)
     *   [Synopsis](#synopsis-3)
     *   [List Of Parameters](#list-of-parameters-3)
     *   [Examples](#examples-3)
-    *   [Notes](#notes-3)    
-*   [SDS Resource](#sds-resource)
+    *   [Notes](#notes-3)
+*   [Snapshot Resource](#snapshot-resource)
     *   [Synopsis](#synopsis-4)
     *   [List Of Parameters](#list-of-parameters-4)
     *   [Examples](#examples-4)
-    *   [Notes](#notes-4) 
-*   [SDC Datasource](#sdc-datasource)
+    *   [Notes](#notes-4)    
+*   [SDS Resource](#sds-resource)
     *   [Synopsis](#synopsis-5)
     *   [List Of Parameters](#list-of-parameters-5)
     *   [Examples](#examples-5)
-    *   [Notes](#notes-5)    
-*   [Protection Domain Datasource](#protection-domain-datasource)
+    *   [Notes](#notes-5) 
+*   [SDC Datasource](#sdc-datasource)
     *   [Synopsis](#synopsis-6)
     *   [List Of Parameters](#list-of-parameters-6)
     *   [Examples](#examples-6)
-    *   [Notes](#notes-6)
-*   [SDS Datasource](#sds-datasource)
+    *   [Notes](#notes-6)    
+*   [Protection Domain Datasource](#protection-domain-datasource)
     *   [Synopsis](#synopsis-7)
     *   [List Of Parameters](#list-of-parameters-7)
     *   [Examples](#examples-7)
     *   [Notes](#notes-7)
-*   [Storage Pool Datasource](#storage-pool-datasource)
+*   [SDS Datasource](#sds-datasource)
     *   [Synopsis](#synopsis-8)
     *   [List Of Parameters](#list-of-parameters-8)
     *   [Examples](#examples-8)
-    *   [Notes](#notes-8) 
-*   [Snapshot Policy Datasource](#snapshot-policy-datasource)
+    *   [Notes](#notes-8)
+*   [Storage Pool Datasource](#storage-pool-datasource)
     *   [Synopsis](#synopsis-9)
     *   [List Of Parameters](#list-of-parameters-9)
     *   [Examples](#examples-9)
     *   [Notes](#notes-9) 
-*   [Volume Datasource](#volume-datasource)
+*   [Snapshot Policy Datasource](#snapshot-policy-datasource)
     *   [Synopsis](#synopsis-10)
     *   [List Of Parameters](#list-of-parameters-10)
     *   [Examples](#examples-10)
     *   [Notes](#notes-10) 
+*   [Volume Datasource](#volume-datasource)
+    *   [Synopsis](#synopsis-11)
+    *   [List Of Parameters](#list-of-parameters-11)
+    *   [Examples](#examples-11)
+    *   [Notes](#notes-11) 
                                 
 
 --------------
+
+## Provider
+Configure the provider on Dell Technologies Powerflex
+
+### Synopsis
+To create any resource / datasource , we need to provide authentication details to connect to the PowerFlex 
+
+### List Of Parameters
+<table>
+    <thead>
+    <tr>
+        <th>
+            <div>Parameter Name</div>
+        </th>
+        <th>
+            <div>Description</div>
+        </th>
+        <th>
+            <div>Required/Optional/Computed</div>
+        </th>
+        <th>
+            <div>Type</div>
+        </th>
+        <th>
+            <div>Default Value</div>
+        </th>
+        <th>
+            <div>Choices</div>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>endpoint</td>
+        <td>The endpoint to which it needs to be connected.</td>
+        <td>Required</td>
+        <td>string</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>username</td>
+        <td>The username required for authentication.</td>
+        <td>Required&nbsp;</td>
+        <td>string</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>password</td>
+        <td>The password required for the authentication.&nbsp;</td>
+        <td>Required</td>
+        <td>string</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>insecure</td>
+        <td>Specifies if the user wants to do SSL verification.&nbsp;</td>
+        <td>Optional</td>
+        <td>bool&nbsp;</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+   </tbody>
+</table>
+
+### Examples
+<pre>
+    <code>
+        provider "powerflex" {
+            username = "username"
+            password = "password"
+            endpoint = "10.10.10.1"
+            insecure = true
+        }
+    </code>
+</pre>
+
+
+### Notes
+<ul>
+<li>Provider details mandatorily needs to be provided to autnenticate and connect to the PowerFlex Storage system before creating any resource / datasource</li>
+</ul>
 
 ## Volume Resource
 
@@ -131,7 +220,7 @@ Managing volumes on PowerFlex storage system includes creating new volume, mappi
         <td>protection_domain_id</td>
         <td>Protection Domain ID.&nbsp;</td>
         <td>Optional And Computed</td>
-        <td>String&nbsp;</td>
+        <td>string&nbsp;</td>
         <td><br></td>
         <td><br></td>
     </tr>
@@ -186,7 +275,7 @@ Managing volumes on PowerFlex storage system includes creating new volume, mappi
         <td>compression_method</td>
         <td>Type of the compression method.
         </td>
-        <td>Computed</td>
+        <td>Optional And Computed</td>
         <td>string</td>
         <td><br></td>
         <td><ul>
@@ -301,9 +390,9 @@ Managing volumes on PowerFlex storage system includes creating new volume, mappi
         access_mode = "ReadWrite"
         sdc_list = [
         {
-                sdc_name = "LGLW6092"
-                limit_iops = 119
-                limit_bw_in_mbps = 19
+                sdc_name = "sdc_name"
+                limit_iops = 11
+                limit_bw_in_mbps = 11
                 access_mode = "ReadOnly"
                 },
             ]   
@@ -314,13 +403,18 @@ Managing volumes on PowerFlex storage system includes creating new volume, mappi
 
 ### Notes
 <ul>
-<li> Volume name is unique across the PowerFlex array.</li>
+<li><b>Volume creation or update is not atomic.</b> <i>In case of partially completed operations, terraform can mark the resource as tainted.
+One can manually remove the taint and try applying the configuration (after making necessary adjustments).</i>
+<b>Warning: If the taint is not removed, terraform will destroy and recreate the resource.</b></li>
+<li> Volume name is <i>unique</i> across the PowerFlex array.</li>
 <li> Either name or the id of the storage pool is required for creating / modifying a volume.</li>
 <li> Either name or the id of the protection domain is required for creating / modifying a volume.</li>
 <li> Size of the volume should be a multiple of 8.</li>
 <li> specify 0 for unlimited iops..</li>
 <li> To set no limit over bandwidth, 0 is to be passed.</li>
 <li> Specify either sdc_name or sdc_id.</li>
+<li>User cannot provide empty value to any of these : name, storage_pool_id, storage_pool_name, protection_domain_id, protection_domain_name</li>
+<li> iops limit value should be specified greater than 10. if not specified unlimited iops with value 0 </li>
 </ul>
 
 ## SDC Resource
@@ -359,7 +453,7 @@ Managing SDCs on PowerFlex storage system includes importing details of SDC and 
         <td>id</td>
         <td>SDC ID.</td>
         <td>Required</td>
-        <td>String</td>
+        <td>string</td>
         <td><br></td>
         <td><br></td>
     </tr>
@@ -383,7 +477,7 @@ Managing SDCs on PowerFlex storage system includes importing details of SDC and 
         <td>sdc_guid</td>
         <td>SDC GUID.&nbsp;</td>
         <td>Computed</td>
-        <td>String&nbsp;</td>
+        <td>string&nbsp;</td>
         <td><br></td>
         <td><br></td>
     </tr>
@@ -431,7 +525,7 @@ Managing SDCs on PowerFlex storage system includes importing details of SDC and 
         <td>links</td>
         <td>Underlying REST API links.</td>
         <td>Computed</td>
-        <td>List</td>
+        <td>list</td>
         <td><br></td>
         <td><br></td>
     </tr> 
@@ -464,14 +558,17 @@ Managing SDCs on PowerFlex storage system includes importing details of SDC and 
     </code>
 </pre>
 
-
+### Notes
+<ul>
+<li>name can't be empty</li>
+</ul>
 
 ## Storage Pool Resource
 
-Managing Dell Technologies PowerFlex storage pool
+Manage storage pools on Dell Technologies PowerFlex
 
 ### Synopsis
-Dell Technologies PowerFlex storage pool module includes creating a new storage pool, and modifying the attributes of a storage pool.
+Managing storage pools on PowerFlex storage system includes creating a new storage pool, and modifying the attributes of a storage pool and deleting a storage pool.
 
 ### List Of Parameters
 
@@ -503,7 +600,7 @@ Dell Technologies PowerFlex storage pool module includes creating a new storage 
         <td>id</td>
         <td>ID of the Storage pool.</td>
         <td>Computed</td>
-        <td>String</td>
+        <td>string</td>
         <td><br></td>
         <td><br></td>
     </tr>
@@ -527,7 +624,7 @@ Dell Technologies PowerFlex storage pool module includes creating a new storage 
         <td>name</td>
         <td>Name of the Storage pool.&nbsp;</td>
         <td>Required</td>
-        <td>String&nbsp;</td>
+        <td>string&nbsp;</td>
         <td><br></td>
         <td><br></td>
     </tr>
@@ -571,7 +668,7 @@ Dell Technologies PowerFlex storage pool module includes creating a new storage 
             media_type = "HDD"
             use_rmcache = true
             use_rfcache = false
-}
+        }
     </code>
 </pre>
 
@@ -768,7 +865,7 @@ Managing snapshots on PowerFlex storage system includes creating snapshot for a 
         <td><br></td>
     </tr>
      <tr>
-        <td>&emsp;&emsp;limit_bw_in_mbps</td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;limit_bw_in_mbps</td>
         <td>Limit of volume network bandwidth.</td>
         <td>Optional And Computed</td>
         <td>int64</td>
@@ -812,31 +909,12 @@ Managing snapshots on PowerFlex storage system includes creating snapshot for a 
     </code>
 </pre>
 
-### Examples
-<pre>
-    <code>
-        resource "powerflex_snapshot" "snapshots-create-access-mode-sdc-map" {
-            name = "snapshots-create-epsilon"
-            volume_id = "4577c84000000120"
-            access_mode = "ReadWrite"
-            size = 16
-            capacity_unit = "GB"
-            remove_mode = "INCLUDING_DESCENDANTS"
-            sdc_list = [
-                {	
-                    sdc_id = "c423b09900000004"
-                    limit_iops = 150
-                    limit_bw_in_mbps = 20
-                    access_mode = "ReadWrite"
-                },
-            ]
-        }
-    </code>
-</pre>
-
 ### Notes
 
 <ul>
+        <li><b>Snapshot creation or update is not atomic.</b> <i>In case of partially completed operations, terraform can mark the resource as tainted.
+One can manually remove the taint and try applying the configuration (after making necessary adjustments).</i>
+<b>Warning: If the taint is not removed, terraform will destroy and recreate the resource.</b></li>
         <li>Either volume_id or volume_name is required in order to create / modify snapshot.</li>
         <li> Size of the volume should be a multiple of 8.</li>
         <li> specify 0 for unlimited iops..</li>
@@ -1063,11 +1141,11 @@ resource "powerflex_sds" "sds" {
     name = "Tf_SDS_01"
     ip_list = [
         {
-            ip = "10.247.100.232"
+            ip = "10.10.10.1"
             role = "all"
         },
         {
-            ip = "10.10.10.1"
+            ip = "10.10.10.2"
             role = "sdcOnly"
         }
     ]
@@ -1155,7 +1233,7 @@ Managing SDCs on PowerFlex storage system includes getting details of SDC using 
         <td><br></td>
     </tr>
     <tr>
-        <td>name</td>
+        <td>&emsp;&emsp;name</td>
         <td>SDC name.</td>
         <td>Computed</td>
         <td>string</td>
@@ -1163,7 +1241,7 @@ Managing SDCs on PowerFlex storage system includes getting details of SDC using 
         <td></td>
     </tr>
     <tr>
-        <td>sdc_guid</td>
+        <td>&emsp;&emsp;sdc_guid</td>
         <td>SDC GUID.</td>
         <td>Computed&nbsp;</td>
         <td>string&nbsp;</td>
@@ -1171,7 +1249,7 @@ Managing SDCs on PowerFlex storage system includes getting details of SDC using 
         <td><br></td>
     </tr>
     <tr>
-        <td>on_vmware</td>
+        <td>&emsp;&emsp;on_vmware</td>
         <td>Presence on VMware.</td>
         <td>Computed</td>
         <td>bool</td>
@@ -1179,7 +1257,7 @@ Managing SDCs on PowerFlex storage system includes getting details of SDC using 
         <td><br></td>
     </tr>  
     <tr>
-        <td>sdc_approved</td>
+        <td>&emsp;&emsp;sdc_approved</td>
         <td>Indicates whether an SDC has approved access to the system.</td>
         <td>Computed</td>
         <td>bool</td>
@@ -1187,7 +1265,7 @@ Managing SDCs on PowerFlex storage system includes getting details of SDC using 
         <td><br></td>
     </tr> 
     <tr>
-        <td>system_id</td>
+        <td>&emsp;&emsp;system_id</td>
         <td>SDC System ID.</td>
         <td>Computed</td>
         <td>string</td>
@@ -1195,7 +1273,7 @@ Managing SDCs on PowerFlex storage system includes getting details of SDC using 
         <td><br></td>
     </tr>
     <tr>
-        <td>sdc_ip</td>
+        <td>&emsp;&emsp;sdc_ip</td>
         <td>SDC IP.</td>
         <td>Computed</td>
         <td>string</td>
@@ -1203,7 +1281,7 @@ Managing SDCs on PowerFlex storage system includes getting details of SDC using 
         <td><br></td>
     </tr>
         <tr>
-        <td>mdm_connection_state</td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mdm_connection_state</td>
         <td>MDM connection state.</td>
         <td>Computed</td>
         <td>string</td>
@@ -1211,7 +1289,7 @@ Managing SDCs on PowerFlex storage system includes getting details of SDC using 
         <td><br></td>
     </tr>    
     <tr>
-        <td>links</td>
+        <td>&emsp;&emsp;links</td>
         <td>Underlying REST API links.</td>
         <td>Computed</td>
         <td>List</td>
@@ -1219,7 +1297,7 @@ Managing SDCs on PowerFlex storage system includes getting details of SDC using 
         <td><br></td>
     </tr> 
     <tr>
-        <td>&emsp;&emsp;rel</td>
+        <td>&emsp;&emsp;&emsp;&emsp;rel</td>
         <td>Specifies the relationship with the SDC.</td>
         <td>Computed</td>
         <td>string</td>
@@ -1227,7 +1305,7 @@ Managing SDCs on PowerFlex storage system includes getting details of SDC using 
         <td><br></td>
     </tr> 
     <tr>
-        <td>&emsp;&emsp;href</td>
+        <td>&emsp;&emsp;&emsp;&emsp;href</td>
         <td>Specifies the exact path to fetch the details.</td>
         <td>Computed</td>
         <td>string</td>
@@ -1238,24 +1316,23 @@ Managing SDCs on PowerFlex storage system includes getting details of SDC using 
 </table>
 
 ### Examples
+#### Get SDC details by id
 <pre>
-    <code>
-    # Get SDC details by id
         data "powerflex_sdc" "selected" {
 		id = "c423b09800000003"
 	    }
-
-    # Get SDC details by name
+</pre>
+#### Get SDC details by name
+<pre>
         data "powerflex_sdc" "selected" {
 		name = "sdc-1"
 	    }
-
-    #Get all SDC's
+</pre>
+#### Get all SDC's
+<pre>
         data "powerflex_sdc" "selected" {
 	    }
-
-}
-    </code>
+</pre>
 </pre>
 
 ### Notes
@@ -1419,7 +1496,7 @@ Managing protection domain on PowerFlex storage system includes getting details 
         <td><br></td>
     </tr> 
         <tr>
-        <td>&emsp;&emsp;protected_maintenance_mode_network_throttling_enabled</td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;protected_maintenance_mode_network_throttling_enabled</td>
         <td>Whether network throttling is enabled for protected maintenance mode.</td>
         <td>Computed</td>
         <td>bool</td>
@@ -1755,7 +1832,7 @@ Managing protection domain on PowerFlex storage system includes getting details 
         <td><br></td>
     </tr>
     <tr>
-        <td>&emsp;&emsp;&emsp;&emsp;window_size_in_sec</td>
+        <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;window_size_in_sec</td>
         <td>Window Size in seconds.</td>
         <td>Computed</td>
         <td>int64</td>
@@ -2036,7 +2113,7 @@ Managing protection domain on PowerFlex storage system includes getting details 
     </tr> 
     <tr>
         <td>&emsp;&emsp;&emsp;&emsp;rel</td>
-        <td>Specifies the relationship with the SDC.</td>
+        <td>Specifies the relationship with the protection domain.</td>
         <td>Computed</td>
         <td>string</td>
         <td><br></td>
@@ -2355,7 +2432,7 @@ Managing SDS on PowerFlex storage system includes getting details of SDS using i
         <td><br></td>
     </tr>
      <tr>
-        <td>&emsp;&emsp;rfcache_error_inconsistent_cache_configuration</td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rfcache_error_inconsistent_cache_configuration</td>
         <td>RF cache error for inconsistent cache configuration.</td>
         <td>Computed</td>
         <td>bool</td>
@@ -2363,7 +2440,7 @@ Managing SDS on PowerFlex storage system includes getting details of SDS using i
         <td><br></td>
     </tr>
      <tr>
-        <td>&emsp;&emsp;rfcache_error_inconsistent_source_configuration</td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rfcache_error_inconsistent_source_configuration</td>
         <td>RF cache error for inconsistent source configuration.</td>
         <td>Computed</td>
         <td>bool</td>
@@ -2491,7 +2568,7 @@ Managing SDS on PowerFlex storage system includes getting details of SDS using i
         <td><br></td>
     </tr>
     <tr>
-        <td>&emsp;&emsp;medium_window</td>
+        <td>&emsp;&emsp;&emsp;&emsp;medium_window</td>
         <td>Medium Window Parameters.</td>
         <td>Computed</td>
         <td>list</td>
@@ -2499,7 +2576,7 @@ Managing SDS on PowerFlex storage system includes getting details of SDS using i
         <td><br></td>
     </tr>
      <tr>
-        <td>&emsp;&emsp;&emsp;&emsp;threshold</td>
+        <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;threshold</td>
         <td>Threshold</td>
         <td>Computed</td>
         <td>int64</td>
@@ -2507,7 +2584,7 @@ Managing SDS on PowerFlex storage system includes getting details of SDS using i
         <td><br></td>
     </tr>
     <tr>
-        <td>&emsp;&emsp;&emsp;&emsp;window_size_in_sec</td>
+        <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;window_size_in_sec</td>
         <td>Window Size in seconds.</td>
         <td>Computed</td>
         <td>int64</td>
@@ -2539,7 +2616,7 @@ Managing SDS on PowerFlex storage system includes getting details of SDS using i
         <td><br></td>
     </tr>
     <tr>
-        <td>&emsp;&emsp;long_window</td>
+        <td>&emsp;&emsp;&emsp;&emsp;long_window</td>
         <td>Long Window Parameters.</td>
         <td>Computed</td>
         <td>list</td>
@@ -2547,7 +2624,7 @@ Managing SDS on PowerFlex storage system includes getting details of SDS using i
         <td><br></td>
     </tr>
      <tr>
-        <td>&emsp;&emsp;&emsp;&emsp;threshold</td>
+        <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;threshold</td>
         <td>Threshold</td>
         <td>Computed</td>
         <td>int64</td>
@@ -2555,7 +2632,7 @@ Managing SDS on PowerFlex storage system includes getting details of SDS using i
         <td><br></td>
     </tr>
     <tr>
-        <td>&emsp;&emsp;&emsp;&emsp;window_size_in_sec</td>
+        <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;window_size_in_sec</td>
         <td>Window Size in seconds.</td>
         <td>Computed</td>
         <td>int64</td>
@@ -2642,7 +2719,7 @@ Managing SDS on PowerFlex storage system includes getting details of SDS using i
         <td><br></td>
     </tr>
     <tr>
-        <td>&emsp;&emsp;medium_window</td>
+        <td>&emsp;&emsp;&emsp;&emsp;medium_window</td>
         <td>Medium Window Parameters.</td>
         <td>Computed</td>
         <td>list</td>
@@ -2650,7 +2727,7 @@ Managing SDS on PowerFlex storage system includes getting details of SDS using i
         <td><br></td>
     </tr>
      <tr>
-        <td>&emsp;&emsp;&emsp;&emsp;threshold</td>
+        <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;threshold</td>
         <td>Threshold</td>
         <td>Computed</td>
         <td>int64</td>
@@ -2658,7 +2735,7 @@ Managing SDS on PowerFlex storage system includes getting details of SDS using i
         <td><br></td>
     </tr>
     <tr>
-        <td>&emsp;&emsp;&emsp;&emsp;window_size_in_sec</td>
+        <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;window_size_in_sec</td>
         <td>Window Size in seconds.</td>
         <td>Computed</td>
         <td>int64</td>
@@ -2690,7 +2767,7 @@ Managing SDS on PowerFlex storage system includes getting details of SDS using i
         <td><br></td>
     </tr>
     <tr>
-        <td>&emsp;&emsp;long_window</td>
+        <td>&emsp;&emsp;&emsp;&emsp;long_window</td>
         <td>Long Window Parameters.</td>
         <td>Computed</td>
         <td>list</td>
@@ -2698,7 +2775,7 @@ Managing SDS on PowerFlex storage system includes getting details of SDS using i
         <td><br></td>
     </tr>
      <tr>
-        <td>&emsp;&emsp;&emsp;&emsp;threshold</td>
+        <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;threshold</td>
         <td>Threshold</td>
         <td>Computed</td>
         <td>int64</td>
@@ -2706,7 +2783,7 @@ Managing SDS on PowerFlex storage system includes getting details of SDS using i
         <td><br></td>
     </tr>
     <tr>
-        <td>&emsp;&emsp;&emsp;&emsp;window_size_in_sec</td>
+        <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;window_size_in_sec</td>
         <td>Window Size in seconds.</td>
         <td>Computed</td>
         <td>int64</td>
@@ -2794,7 +2871,7 @@ Managing SDS on PowerFlex storage system includes getting details of SDS using i
         <td><br></td>
     </tr>
     <tr>
-        <td>&emsp;&emsp;medium_window</td>
+        <td>&emsp;&emsp;&emsp;&emsp;medium_window</td>
         <td>Medium Window Parameters.</td>
         <td>Computed</td>
         <td>list</td>
@@ -2842,7 +2919,7 @@ Managing SDS on PowerFlex storage system includes getting details of SDS using i
         <td><br></td>
     </tr>
     <tr>
-        <td>&emsp;&emsp;long_window</td>
+        <td>&emsp;&emsp;&emsp;&emsp;long_window</td>
         <td>Long Window Parameters.</td>
         <td>Computed</td>
         <td>list</td>
@@ -3026,7 +3103,7 @@ Managing SDS on PowerFlex storage system includes getting details of SDS using i
         <td><br></td>
     </tr>
     <tr>
-        <td>links</td>
+        <td>&emsp;&emsp;links</td>
         <td>Underlying REST API links.</td>
         <td>Computed</td>
         <td>List</td>
@@ -3034,7 +3111,7 @@ Managing SDS on PowerFlex storage system includes getting details of SDS using i
         <td><br></td>
     </tr> 
     <tr>
-        <td>&emsp;&emsp;rel</td>
+        <td>&emsp;&emsp;&emsp;&emsp;rel</td>
         <td>Specifies the relationship with the SDS.</td>
         <td>Computed</td>
         <td>string</td>
@@ -3042,7 +3119,7 @@ Managing SDS on PowerFlex storage system includes getting details of SDS using i
         <td><br></td>
     </tr> 
     <tr>
-        <td>&emsp;&emsp;href</td>
+        <td>&emsp;&emsp;&emsp;&emsp;href</td>
         <td>Specifies the exact path to fetch the details.</td>
         <td>Computed</td>
         <td>string</td>
@@ -3053,37 +3130,40 @@ Managing SDS on PowerFlex storage system includes getting details of SDS using i
 </table>
 
 ### Examples
-<pre>
-    <code>
-    # Get sds details by sds names and protection domain id
+
+#### Get sds details by sds names and protection domain id
+<pre>    
         data "powerflex_sds" "example1" {
             protection_domain_id = "4eeb304600000000"
             sds_names = ["SDS_Test_Tf"]
         }
-
-    # Get sds details by sds ids and protection domain id
+</pre>
+#### Get sds details by sds ids and protection domain id
+<pre>
         data "powerflex_sds" "example2" {
             protection_domain_id = "4eeb304600000000"
             sds_ids = ["6ae199c500000007"]
         }
-
-    # Get sds details by sds names and protection domain name
+</pre>
+#### Get sds details by sds names and protection domain name
+<pre>
         data "powerflex_sds" "example3" {
             protection_domain_name = "domain1"
             sds_names = ["SDS_Test_Tf"]
         }
-
-    # Get sds details by sds id and protection domain name
+</pre>
+#### Get sds details by sds id and protection domain name
+<pre>
         data "powerflex_sds" "example4" {
             protection_domain_name = "domain1"
             sds_ids = ["6ae199c500000007"]
         }
-
-    # Get all sds under a protection domain id
+</pre>
+#### Get all sds under a protection domain id
+<pre>
         data "powerflex_sds" "example5" {
             protection_domain_id = "4eeb304600000000"
         }
-    </code>
 </pre>
 
 ### Notes
@@ -3344,7 +3424,7 @@ Managing storage pool on PowerFlex storage system includes getting details of st
         <td><br></td>
     </tr>
      <tr>
-        <td>&emsp;&emsp;protected_maintenance_mode_io_priority_num_of_concurrent_ios_per_device</td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;protected_maintenance_mode_io_priority_num_of_concurrent_ios_per_device</td>
         <td>Number of Concurrent Protected Maintenance Mode IOPS per Device.</td>
         <td>Computed</td>
         <td>int64</td>
@@ -3536,6 +3616,134 @@ Managing storage pool on PowerFlex storage system includes getting details of st
         <td><br></td>
     </tr>
     <tr>
+        <td>&emsp;&emsp;capacity_alert_high_threshold</td>
+        <td>Capacity alert high threshold.</td>
+        <td>Computed</td>
+        <td>int64</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>&emsp;&emsp;capacity_alert_critical_threshold</td>
+        <td>Capacity alert critical threshold.</td>
+        <td>Computed</td>
+        <td>int64</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>&emsp;&emsp;vtree_migration_io_priority_app_iops_per_device_threshold</td>
+        <td>VTree migration IO priority App IOPS per device threshold.</td>
+        <td>Computed</td>
+        <td>int64</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>&emsp;&emsp;vtree_migration_io_priority_app_bw_per_device_threshold_kbps</td>
+        <td>VTree migration IO priority App bandwidth per device threshold in Kbps.</td>
+        <td>Computed</td>
+        <td>int64</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>&emsp;&emsp;vtree_migration_io_priority_quiet_period_msec</td>
+        <td>VTree migration IO priority quiet period in Msec.</td>
+        <td>Computed</td>
+        <td>int64</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>&emsp;&emsp;fgl_accp_id</td>
+        <td>FGL ID.</td>
+        <td>Computed</td>
+        <td>string</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>&emsp;&emsp;fgl_extra_capacity</td>
+        <td>FGL extra capacity.</td>
+        <td>Computed</td>
+        <td>int64</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>&emsp;&emsp;fgl_overprovisioning_factor</td>
+        <td>FGL overprovisioning factor.</td>
+        <td>Computed</td>
+        <td>int64</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>&emsp;&emsp;fgl_write_atomicity_size</td>
+        <td>FGL write atomicity size.</td>
+        <td>Computed</td>
+        <td>int64</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>&emsp;&emsp;fgl_nvdimm_write_cache_size_mb</td>
+        <td>FGL NVDIMM write cache size in Mb.</td>
+        <td>Computed</td>
+        <td>int64</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>&emsp;&emsp;fgl_nvdimm_metadata_amotization_x100</td>
+        <td>FGL NVDIMM metadata amortization.</td>
+        <td>Computed</td>
+        <td>int64</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>&emsp;&emsp;fgl_perf_profile</td>
+        <td>FGL performance profile.</td>
+        <td>Computed</td>
+        <td>string</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>&emsp;&emsp;protected_maintenance_mode_io_priority_bw_limit_per_device_kbps</td>
+        <td>Protected maintenance mode IO priority bandwidth limit per device in Kbps.</td>
+        <td>Computed</td>
+        <td>int64</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>&emsp;&emsp;protected_maintenance_mode_io_priority_app_iops_per_device_threshold</td>
+        <td>Protected maintenance mode IO priority app IOPS per device threshold.</td>
+        <td>Computed</td>
+        <td>int64</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;protected_maintenance_mode_io_priority_app_bw_per_device_threshold_kbps</td>
+        <td>Protected maintenance mode IO priority app bandwidth per device threshold in Kbps.</td>
+        <td>Computed</td>
+        <td>int64</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
+        <td>&emsp;&emsp;protected_maintenance_mode_io_priority_quiet_period_msec</td>
+        <td>Protected maintenance mode IO priority quiet period in Msec.</td>
+        <td>Computed</td>
+        <td>int64</td>
+        <td><br></td>
+        <td><br></td>
+    </tr>
+    <tr>
         <td>&emsp;&emsp;volumes</td>
         <td>List of volumes associated with storage pool.</td>
         <td>Computed</td>
@@ -3583,7 +3791,7 @@ Managing storage pool on PowerFlex storage system includes getting details of st
         <td><br></td>
         <td><br></td>
     </tr>
-        <td>links</td>
+        <td>&emsp;&emsp;links</td>
         <td>Underlying REST API links.</td>
         <td>Computed</td>
         <td>List</td>
@@ -3591,7 +3799,7 @@ Managing storage pool on PowerFlex storage system includes getting details of st
         <td><br></td>
     </tr> 
     <tr>
-        <td>&emsp;&emsp;rel</td>
+        <td>&emsp;&emsp;&emsp;&emsp;rel</td>
         <td>Specifies the relationship with the storage pool.</td>
         <td>Computed</td>
         <td>string</td>
@@ -3599,7 +3807,7 @@ Managing storage pool on PowerFlex storage system includes getting details of st
         <td><br></td>
     </tr> 
     <tr>
-        <td>&emsp;&emsp;href</td>
+        <td>&emsp;&emsp;&emsp;&emsp;href</td>
         <td>Specifies the exact path to fetch the details.</td>
         <td>Computed</td>
         <td>string</td>
@@ -3610,594 +3818,39 @@ Managing storage pool on PowerFlex storage system includes getting details of st
 </table>
 
 ### Examples
+#### Get storage pool details by storage pool names and protection domain id
 <pre>
-    <code>
-    # Get storage pool details by storage pool names and protection domain id
         data "powerflex_storagepool" "example1" {
             protection_domain_id = "4eeb304600000000"
             storage_pool_names = ["pool2", "pool1"]
         }
-
-    # Get storage pool details by storage pool ids and protection domain id
-        data "powerflex_storagepool" "example2" {
-            protection_domain_id = "4eeb304600000000"
-            storage_pool_ids = ["7630a24600000000", "7630a24800000002"]
-        }
-
-    # Get storage pool details by storage pool names and protection domain name
-        data "powerflex_storagepool" "example3" {
-            protection_domain_name = "domain1"
-            storage_pool_names = ["pool2", "pool1"]
-        }
-
-    # Get storage pool details by storage pool id and protection domain name
-        data "powerflex_storagepool" "example4" {
-            protection_domain_name = "domain1"
-            storage_pool_ids = ["7630a24600000000", "7630a24800000002"]
-        }
-
-    # Get all storage pools under a protection domain id
-        data "powerflex_storagepool" "example5" {
-            protection_domain_name = "domain1"
-        }
-    </code>
 </pre>
-
-### Notes
-<ul>
-<li>protection_domain_id and protection_domain_name are mutually exclusive.</li>
-<li>storage_pool_ids and storage_pool_names are mutually exclusive.</li>
-<li>Either protection_domain_id or protection_domain_name must be mentioned to fetch the details of an sds.</li>
-
-</ul>
-
-
-## Storage Pool Datasource
-
-Manage Storage Pool on Dell Technologies PowerFlex
-### Synopsis
-Managing storage pool on PowerFlex storage system includes getting details of storage pool using id or name of storage pool
-
-### List Of Parameters
-
-<table>
-    <thead>
-    <tr>
-        <th>
-            <div>Parameter Name</div>
-        </th>
-        <th>
-            <div>Description</div>
-        </th>
-        <th>
-            <div>Required/Optional/Computed</div>
-        </th>
-        <th>
-            <div>Type</div>
-        </th>
-        <th>
-            <div>Default Value</div>
-        </th>
-        <th>
-            <div>Choices</div>
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>protection_domain_id</td>
-        <td>Protection Domain ID.</td>
-        <td>Optional</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-    <tr>
-        <td>protection_domain_name</td>
-        <td>Protection Domain Name.</td>
-        <td>Optional&nbsp;</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-    <tr>
-        <td>storage_pool_ids</td>
-        <td>List of storage pool IDs.&nbsp;</td>
-        <td>Optional</td>
-        <td>list</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-    <tr>
-        <td>storage_pool_names</td>
-        <td>List of storage pool names.&nbsp;</td>
-        <td>Optional</td>
-        <td>list&nbsp;</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-    <tr>
-        <td>storage_pools</td>
-        <td>List of storage pools.</td>
-        <td>Computed</td>
-        <td>list</td>
-        <td><br></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>&emsp;&emsp;id</td>
-        <td>Storage pool ID.</td>
-        <td>Computed&nbsp;</td>
-        <td>string&nbsp;</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-    <tr>
-        <td>&emsp;&emsp;name</td>
-        <td>Storage pool name.</td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>  
-    <tr>
-        <td>&emsp;&emsp;rebalance_io_priority_policy</td>
-        <td>Rebalance IO Priority Policy.</td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr> 
-    <tr>
-        <td>&emsp;&emsp;rebuild_io_priority_policy</td>
-        <td>Rebuild IO Priority Policy.</td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-    <tr>
-        <td>&emsp;&emsp;rebuild_io_priority_bw_limit_per_device_in_kbps</td>
-        <td>Rebuild Bandwidth Limit per Device.</td>
-        <td>Computed</td>
-        <td>int64</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-        <tr>
-        <td>&emsp;&emsp;rebuild_io_priority_num_of_concurrent_ios_per_device</td>
-        <td>Number of Concurrent Rebuild IOPS per Device.</td>
-        <td>Computed</td>
-        <td>int64</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-        <tr>
-        <td>&emsp;&emsp;rebalance_io_priority_num_of_concurrent_ios_per_device</td>
-        <td>Number of Concurrent Rebalance IOPS per Device.</td>
-        <td>Computed</td>
-        <td>int64</td>
-        <td><br></td>
-        <td><br></td>
-    </tr> 
-        <tr>
-        <td>&emsp;&emsp;rebalance_io_priority_bw_limit_per_device_kbps</td>
-        <td>Rebalance Bandwidth Limit per Device.</td>
-        <td>Computed</td>
-        <td>int64</td>
-        <td><br></td>
-        <td><br></td>
-    </tr> 
-        <tr>
-        <td>&emsp;&emsp;rebuild_io_priority_app_iops_per_device_threshold</td>
-        <td>Rebuild Application IOPS per Device Threshold.</td>
-        <td>Computed</td>
-        <td>int64</td>
-        <td><br></td>
-        <td><br></td>
-    </tr> 
-        <tr>
-        <td>&emsp;&emsp;rebalance_io_priority_app_iops_per_device_threshold</td>
-        <td>Rebalance Application IOPS per Device Threshold.</td>
-        <td>Computed</td>
-        <td>int64</td>
-        <td><br></td>
-        <td><br></td>
-    </tr> 
-        <tr>
-        <td>&emsp;&emsp;rebuild_io_priority_app_bw_per_device_threshold_kbps</td>
-        <td>Rebuild Application Bandwidth per Device Threshold.</td>
-        <td>Computed</td>
-        <td>int64</td>
-        <td><br></td>
-        <td><br></td>
-    </tr> 
-        <tr>
-        <td>&emsp;&emsp;rebalance_io_priority_app_bw_per_device_threshold_kbps</td>
-        <td>Rebalance Application Bandwidth per Device Threshold.</td>
-        <td>Computed</td>
-        <td>int64</td>
-        <td><br></td>
-        <td><br></td>
-    </tr> 
-        <tr>
-        <td>&emsp;&emsp;rebuild_io_priority_quiet_period_msec</td>
-        <td>Rebuild Quiet Period.</td>
-        <td>Computed</td>
-        <td>int64</td>
-        <td><br></td>
-        <td><br></td>
-    </tr> 
-        <tr>
-        <td>&emsp;&emsp;rebalance_io_priority_quiet_period_msec</td>
-        <td>Rebalance Quiet Period.</td>
-        <td>Computed</td>
-        <td>int64</td>
-        <td><br></td>
-        <td><br></td>
-    </tr> 
-        <tr>
-        <td>&emsp;&emsp;zero_padding_enabled</td>
-        <td>Zero Padding Enabled.</td>
-        <td>Computed</td>
-        <td>bool</td>
-        <td><br></td>
-        <td><br></td>
-    </tr> 
-        <tr>
-        <td>&emsp;&emsp;use_rm_cache</td>
-        <td>Use RAM Read Cache.</td>
-        <td>Computed</td>
-        <td>bool</td>
-        <td><br></td>
-        <td><br></td>
-    </tr> 
-        <tr>
-        <td>&emsp;&emsp;spare_percentage</td>
-        <td>Spare Percentage.</td>
-        <td>Computed</td>
-        <td>int64</td>
-        <td><br></td>
-        <td><br></td>
-    </tr> 
-        <tr>
-        <td>&emsp;&emsp;rm_cache_write_handling_mode</td>
-        <td>RAM Read Cache Write Handling Mode.</td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-     <tr>
-        <td>&emsp;&emsp;rebuild_enabled</td>
-        <td>Rebuild Enabled.</td>
-        <td>Computed</td>
-        <td>bool</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-     <tr>
-        <td>&emsp;&emsp;rebalance_enabled</td>
-        <td>Rebalance Enabled.</td>
-        <td>Computed</td>
-        <td>bool</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-     <tr>
-        <td>&emsp;&emsp;num_of_parallel_rebuild_rebalance_jobs_per_device</td>
-        <td>Number of Parallel Rebuild/Rebalance Jobs per Device.</td>
-        <td>Computed</td>
-        <td>int64</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-     <tr>
-        <td>&emsp;&emsp;background_scanner_bw_limit_kbps</td>
-        <td>Background Scanner Bandwidth Limit.</td>
-        <td>Computed</td>
-        <td>int64</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-     <tr>
-        <td>&emsp;&emsp;protected_maintenance_mode_io_priority_num_of_concurrent_ios_per_device</td>
-        <td>Number of Concurrent Protected Maintenance Mode IOPS per Device.</td>
-        <td>Computed</td>
-        <td>int64</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-     <tr>
-        <td>&emsp;&emsp;data_layout</td>
-        <td>Data Layout.</td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-     <tr>
-        <td>&emsp;&emsp;vtree_migration_io_priority_bw_limit_per_device_kbps</td>
-        <td>VTree Migration Bandwidth Limit per Device.</td>
-        <td>Computed</td>
-        <td>int64</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-     <tr>
-        <td>&emsp;&emsp;vtree_migration_io_priority_policy</td>
-        <td>VTree Migration IO Priority Policy.</td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-     <tr>
-        <td>&emsp;&emsp;address_space_usage</td>
-        <td>Address space usage.</td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-     <tr>
-        <td>&emsp;&emsp;external_acceleration_type</td>
-        <td>External acceleration type.</td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-     <tr>
-        <td>&emsp;&emsp;persistent_checksum_state</td>
-        <td>Persistent Checksum State.</td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-    <tr>
-        <td>&emsp;&emsp;use_rf_cache</td>
-        <td>Use Read Flash Cache.</td>
-        <td>Computed</td>
-        <td>bool</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-    <tr>
-        <td>&emsp;&emsp;checksum_enabled</td>
-        <td>Checksum Enabled.</td>
-        <td>Computed</td>
-        <td>bool</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-     <tr>
-        <td>&emsp;&emsp;compression_method</td>
-        <td>Compression method.</td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-    <tr>
-        <td>&emsp;&emsp;fragmentation_enabled</td>
-        <td>Fragmentation Enabled.</td>
-        <td>Computed</td>
-        <td>bool</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-    <tr>
-        <td>&emsp;&emsp;capacity_usage_state</td>
-        <td>Capacity usage state (normal/high/critical/full).</td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-     <tr>
-        <td>&emsp;&emsp;capacity_usage_type</td>
-        <td>Usage state reason.</td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-    <tr>
-        <td>&emsp;&emsp;address_space_usage_type</td>
-        <td>Address space usage reason.</td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-     <tr>
-        <td>&emsp;&emsp;bg_scanner_compare_error_action</td>
-        <td>Scanner compare-error action.</td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-     <tr>
-        <td>&emsp;&emsp;bg_scanner_read_error_action</td>
-        <td>Scanner read-error action.</td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-    <tr>
-        <td>&emsp;&emsp;replication_capacity_max_ratio</td>
-        <td>Replication allowed capacity.</td>
-        <td>Computed</td>
-        <td>int64</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-    <tr>
-        <td>&emsp;&emsp;persistent_checksum_enabled</td>
-        <td>Persistent checksum enabled.</td>
-        <td>Computed</td>
-        <td>bool</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-    <tr>
-        <td>&emsp;&emsp;persistent_checksum_builder_limit_kb</td>
-        <td>Persistent checksum builder limit.</td>
-        <td>Computed</td>
-        <td>int64</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-    <tr>
-        <td>&emsp;&emsp;persistent_checksum_validate_on_read</td>
-        <td>Persistent checksum validation on read.</td>
-        <td>Computed</td>
-        <td>bool</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-    <tr>
-        <td>&emsp;&emsp;vtree_migration_io_priority_num_of_concurrent_ios_per_device</td>
-        <td>Number of concurrent VTree migration IOPS per device.</td>
-        <td>Computed</td>
-        <td>int64</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-     <tr>
-        <td>&emsp;&emsp;protected_maintenance_mode_io_priority_policy</td>
-        <td>Protected maintenance mode IO priority policy.</td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-    <tr>
-        <td>&emsp;&emsp;background_scanner_mode</td>
-        <td>Scanner mode.</td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-     <tr>
-        <td>&emsp;&emsp;media_type</td>
-        <td>Media type.</td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-    <tr>
-        <td>&emsp;&emsp;volumes</td>
-        <td>List of volumes associated with storage pool.</td>
-        <td>Computed</td>
-        <td>list</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-    <tr>
-        <td>&emsp;&emsp;&emsp;&emsp;id</td>
-        <td>Volume ID.</td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-    <tr>
-        <td>&emsp;&emsp;&emsp;&emsp;name</td>
-        <td>Volume Name.</td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-     <tr>
-        <td>&emsp;&emsp;sds</td>
-        <td>List of SDS associated with storage pool.</td>
-        <td>Computed</td>
-        <td>list</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-        <tr>
-        <td>&emsp;&emsp;&emsp;&emsp;id</td>
-        <td>SDS ID.</td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-    <tr>
-        <td>&emsp;&emsp;&emsp;&emsp;name</td>
-        <td>SDS Name.</td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-        <td>links</td>
-        <td>Underlying REST API links.</td>
-        <td>Computed</td>
-        <td>List</td>
-        <td><br></td>
-        <td><br></td>
-    </tr> 
-    <tr>
-        <td>&emsp;&emsp;rel</td>
-        <td>Specifies the relationship with the storage pool.</td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr> 
-    <tr>
-        <td>&emsp;&emsp;href</td>
-        <td>Specifies the exact path to fetch the details.</td>
-        <td>Computed</td>
-        <td>string</td>
-        <td><br></td>
-        <td><br></td>
-    </tr>
-     </tbody>
-</table>
-
-### Examples
+#### Get storage pool details by storage pool ids and protection domain id
 <pre>
-    <code>
-    # Get storage pool details by storage pool names and protection domain id
-        data "powerflex_storagepool" "example1" {
-            protection_domain_id = "4eeb304600000000"
-            storage_pool_names = ["pool2", "pool1"]
-        }
-
-    # Get storage pool details by storage pool ids and protection domain id
         data "powerflex_storagepool" "example2" {
             protection_domain_id = "4eeb304600000000"
             storage_pool_ids = ["7630a24600000000", "7630a24800000002"]
         }
-
-    # Get storage pool details by storage pool names and protection domain name
+</pre>
+#### Get storage pool details by storage pool names and protection domain name
+<pre>
         data "powerflex_storagepool" "example3" {
             protection_domain_name = "domain1"
             storage_pool_names = ["pool2", "pool1"]
         }
-
-    # Get storage pool details by storage pool id and protection domain name
+</pre>
+#### Get storage pool details by storage pool id and protection domain name
+<pre>
         data "powerflex_storagepool" "example4" {
             protection_domain_name = "domain1"
             storage_pool_ids = ["7630a24600000000", "7630a24800000002"]
         }
-
-    # Get all storage pools under a protection domain id
+</pre>
+#### Get all storage pools under a protection domain id
+<pre>
         data "powerflex_storagepool" "example5" {
             protection_domain_name = "domain1"
         }
-    </code>
 </pre>
 
 ### Notes
@@ -4290,7 +3943,7 @@ Managing snapshot policy on PowerFlex storage system includes getting details of
         <td><br></td>
     </tr>
     <tr>
-        <td>&emsp;&emsp;auto_snapshot_creation_cadence_in_min</td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;auto_snapshot_creation_cadence_in_min</td>
         <td>Auto snapshot creation cadence in min.</td>
         <td>Computed</td>
         <td>int64</td>
@@ -4333,7 +3986,7 @@ Managing snapshot policy on PowerFlex storage system includes getting details of
         <td>&emsp;&emsp;num_of_retained_snapshots_per_level</td>
         <td>Number of retained snapshots per level.</td>
         <td>Computed</td>
-        <td>list</td>
+        <td>list of int64</td>
         <td><br></td>
         <td><br></td>
     </tr> 
@@ -4370,7 +4023,7 @@ Managing snapshot policy on PowerFlex storage system includes getting details of
         <td><br></td>
     </tr> 
         <tr>
-        <td>&emsp;&emsp;time_of_last_auto_snapshot_creation_failure</td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time_of_last_auto_snapshot_creation_failure</td>
         <td>Time of last auto snapshot creation failure.</td>
         <td>Computed</td>
         <td>int64</td>
@@ -4417,15 +4070,15 @@ Managing snapshot policy on PowerFlex storage system includes getting details of
         <td><br></td>
         <td><br></td>
     </tr>     
-        <td>links</td>
+        <td>&emsp;&emsp;links</td>
         <td>Underlying REST API links.</td>
         <td>Computed</td>
-        <td>List</td>
+        <td>list</td>
         <td><br></td>
         <td><br></td>
     </tr> 
     <tr>
-        <td>&emsp;&emsp;rel</td>
+        <td>&emsp;&emsp;&emsp;&emsp;rel</td>
         <td>Specifies the relationship with the snapshot policy.</td>
         <td>Computed</td>
         <td>string</td>
@@ -4433,7 +4086,7 @@ Managing snapshot policy on PowerFlex storage system includes getting details of
         <td><br></td>
     </tr> 
     <tr>
-        <td>&emsp;&emsp;href</td>
+        <td>&emsp;&emsp;&emsp;&emsp;href</td>
         <td>Specifies the exact path to fetch the details.</td>
         <td>Computed</td>
         <td>string</td>
@@ -4444,22 +4097,22 @@ Managing snapshot policy on PowerFlex storage system includes getting details of
 </table>
 
 ### Examples
-<pre>
-    <code>
-    # Get snapshot policy details by snapshot policy  id
+#### Get snapshot policy details by snapshot policy  id
+<pre>    
         data "powerflex_snapshotpolicy" "sp1" {						
             id = "15ad99b900000001"
         }
-
-    # Get snapshot policy details by snapshot policy name
+</pre>
+#### Get snapshot policy details by snapshot policy name
+<pre>
         data "powerflex_snapshotpolicy" "sp2" {						
             name = "sample_snap_policy_1"
         }
-
-    # Get all the snapshot policies
+</pre>
+#### Get all the snapshot policies
+<pre>
         data "powerflex_snapshotpolicy" "sp3" {						
         }
-    </code>
 </pre>
 
 ### Notes
@@ -4534,7 +4187,7 @@ Managing volume on PowerFlex storage system includes getting details of volume u
         <td><br></td>
     </tr>
     <tr>
-        <td>&emsp;&emsp;volumes</td>
+        <td>volumes</td>
         <td>List of volumes.</td>
         <td>Computed&nbsp;</td>
         <td>list</td>
@@ -4670,7 +4323,7 @@ Managing volume on PowerFlex storage system includes getting details of volume u
         <td><br></td>
     </tr> 
         <tr>
-        <td>&emsp;&emsp;locked_auto_snapshot_marked_for_removal</td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locked_auto_snapshot_marked_for_removal</td>
         <td>Specifies if it's a locked auto snapshot marked for removal.</td>
         <td>Computed</td>
         <td>bool</td>
@@ -4793,13 +4446,13 @@ Managing volume on PowerFlex storage system includes getting details of volume u
         <td>&emsp;&emsp;links</td>
         <td>Underlying REST API links.</td>
         <td>Computed</td>
-        <td>List</td>
+        <td>list</td>
         <td><br></td>
         <td><br></td>
     </tr> 
     <tr>
         <td>&emsp;&emsp;&emsp;&emsp;rel</td>
-        <td>Specifies the relationship with the snapshot policy.</td>
+        <td>Specifies the relationship with the volume.</td>
         <td>Computed</td>
         <td>string</td>
         <td><br></td>
@@ -4817,36 +4470,38 @@ Managing volume on PowerFlex storage system includes getting details of volume u
 </table>
 
 ### Examples
+#### Get volume details by volume id
 <pre>
-    <code>
-    # Get volume details by volume id
+    
         data "powerflex_volume" "all" {						
             id = "457752ff000000c7"
         }
-
-    # Get volume details by volume name
+</pre>
+#### Get volume details by volume name
+<pre>
         data "powerflex_volume" "all" {						
             name = "cicd-dbc5a5909d"
         }
-
-    # Get all the volumes
+</pre>
+#### Get all the volumes
+<pre>
         data "powerflex_volume" "all" {						
         }
-
-    # Get all the volumes under a storage pool using storage pool id
+</pre>
+#### Get all the volumes under a storage pool using storage pool id
+<pre>
         data "powerflex_volume" "all" {						
             storage_pool_id = "7630a24600000000"
         }
-
-    # Get all the volumes under a storage pool using storage pool name
+</pre>
+#### Get all the volumes under a storage pool using storage pool name
+<pre>
         data "powerflex_volume" "all" {						
             storage_pool_name = "pool1"
         }               
-    </code>
 </pre>
 
 ### Notes
 <ul>
 <li>id , name , storage_pool_id, storage_pool_nameare mutually exclusive and cannot be empty.</li>
 </ul>
-
